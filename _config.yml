@@ -60,7 +60,7 @@ comments:
     lang: # "en" (default)
     lazy: # true, false # Loading of the comments will be deferred until the user scrolls near the comments container.
   staticman:
-    branch: # "master"
+    branch: # "main"
     endpoint: # "https://{your Staticman v3 API}/v3/entry/github/"
 reCaptcha:
   siteKey:
