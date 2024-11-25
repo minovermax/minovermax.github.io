@@ -17,7 +17,7 @@ minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon
 # Site Settings
 locale: "en-US"
 rtl: # true, false (default) # turns direction of the page into right to left for RTL languages
-title: "Site Title"
+title: "min's website"
 title_separator: "-"
 subtitle: # site tagline that appears below site title in masthead
 name: "Min Lee"
@@ -113,10 +113,9 @@ analytics:
 # Site Author
 author:
   name: "Soungmin (Min) Lee"
-  avatar: # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar: "/assets/images/min_pic.png"
   bio: "CS @ Georgia Tech"
   location: "Atlanta, GA"
-  email: "minlee@gatech.edu"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
