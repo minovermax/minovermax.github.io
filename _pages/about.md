@@ -21,7 +21,7 @@ Currently focused on NLP research and integrating LLM-powered features into web/
 
 ### Career
 
-- **Software Development Engineer Intern** · Amazon Web Services (AWS), Elastic Block Store · *Aug 2025 – Present*
+- **Software Development Engineer Intern** · Amazon Web Services (AWS) · *Aug 2025 – Present*
   - Elastic Block Storage VMDS Team
 - **Undergraduate Researcher** · Georgia Tech VIP Program · *Jan 2024 – Aug 2025*
   - Core contributing author of the World Central Banks (WCB) dataset paper, published at NeurIPS 2025, introducing the largest monetary policy corpus to date and benchmarking state-of-the-art language models for stance, temporal, and uncertainty detection.
