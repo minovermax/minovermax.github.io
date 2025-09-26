@@ -18,21 +18,23 @@ redirect_from:
 
 * Aug 2025 – Present: **Software Development Engineer Intern**
   * Amazon Web Services (AWS), Elastic Block Store – VMDS Team
-  * Seattle, WA
+    * Seattle, WA
 
 * Jan 2024 – Aug 2025: **Undergraduate Researcher**
   * Georgia Tech VIP Program (FinTech Lab)
-  * Atlanta, GA
+    * Atlanta, GA
 
 * Jul 2024 – Aug 2024: **Software Engineer Intern**
-  * LG Innotek, Seoul, South Korea
+  * LG Innotek
+    * Seoul, South Korea
 
 * May 2024 – Jun 2024: **Software Engineer Intern**
-  * VITAON, Atlanta, GA (Remote)
+  * VITAON
+    * Atlanta, GA (Remote)
 
 * Sep 2021 – Mar 2023: **Software Developer, Sergeant**
   * Republic of Korea Air Force (ROKAF), Information Systems Management Group
-  * Gyeryong, South Korea
+    * Gyeryong, South Korea
 
 ## Publications
 
