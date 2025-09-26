@@ -1,56 +1,54 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "Soungmin (Min) Lee"
 author_profile: true
-redirect_from: 
+redirect_from:
   - /about/
   - /about.html
 ---
 
-This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!
+Hello, I'm **Soungmin (Min) Lee**, a BS/MS student in Computer Science at **Georgia Tech**, specializing in NLP and web development.
+Currently focused on NLP research and integrating LLM-powered features into web/mobile services, I enjoy building software solutions that optimize critical processes and solve complex problems.
 
- You can fork [this template](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and Markdown files, add your own PDFs and other content, and have your own site for free, with no ads!
+---
 
-A data-driven personal website
-======
-Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you separate the website's content from its form. The content & metadata of your website are in structured Markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various Markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
+### Publications
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your Markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over - just be sure to save the Markdown files! You can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
+- **Words That Unite The World: A Unified Framework for Deciphering Central Bank Communications Globally**
+  - **Soungmin Lee†** (Core Contributor †), *Agam Shah*, *Siddhant Sukhani*, *Huzaifa Pardawala*, Saketh Budideti, Riya Bhadani†, Rudra Gopal†, Siddhartha Somani†, Michael Galarnyk†, *NeurIPS 2025* [[Paper]](https://gcb-web-bb21b.web.app/static/pdf/main.pdf) · [[Dataset]](https://huggingface.co/collections/gtfintechlab/wcb-678965e38178c63158b45fdf) · [[Code]](https://github.com/gtfintechlab/WorldCentralBanks) · [[Website]](https://gcb-web-bb21b.web.app/)
 
-For those users that need more advanced functionality, the template also supports the following popular tools:
-- [MathJax](https://www.mathjax.org/) for mathematical equations
-- [Mermaid](https://mermaid.js.org/) for diagraming
-- [Plotly](https://plotly.com/javascript/) for plotting
+---
 
-Getting started
-======
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this template](https://github.com/academicpages/academicpages.github.io) by clicking the "Use this template" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](http://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
+### Career
 
-Site-wide configuration
-------
-The main configuration file for the site is in the base directory in [_config.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_config.yml), which defines the content in the sidebars and other site-wide features. You will need to replace the default variables with ones about yourself and your site's github repository. The configuration file for the top menu is in [_data/navigation.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_data/navigation.yml). For example, if you don't have a portfolio or blog posts, you can remove those items from that navigation.yml file to remove them from the header. 
+- **Software Development Engineer Intern** · Amazon Web Services (AWS), Elastic Block Store — *Aug 2025–Present*
+  - Elastic Block Storage VMDS Team
+- **Undergraduate Researcher** · Georgia Tech VIP Program — *Jan 2024–Aug 2025*
+  - Core contributing author of the World Central Banks (WCB) dataset paper, published at NeurIPS 2025, introducing the largest monetary policy corpus to date and benchmarking state-of-the-art language models for stance, temporal, and uncertainty detection.
+  - Implemented pipelines and filtration techniques to counter intentional mixed tone of central banks of countries such as the USA, South Korea, Turkey, etc.
+  - Engineered a new dataset format which drastically improves classification accuracy of hawkish/dovish stances of the Fed using pre-trained language models.
+  - Analyzed NLP models such as StockNet from mid-2010s using Python and TensorFlow, evaluating if the models hold accuracy with modern data.
+- **Software Engineer Intern** · LG Innotek — *Jul 2024–Aug 2024*
+  - Developed a trilateration localization system using BLE beacons from NXP, implemented in C and packaged with CMake, achieving 9 yard accuracy for Bluetooth device positioning.
+  - Applied and trained the ECA-ResNet model using Python and TensorFlow on a RSSI localization system, improving vehicle tracking accuracy by 15% and identifying key error factors for further optimization.
+  - Implemented a customized particle filter for UWB data, reducing location measurement error by 55% within an 10 yard range, enhancing mobile digital key functionality.
+- **Software Engineer Intern** · VITAON — *May 2024–Jun 2024*
+  - Developed the frontend and backend of VITAON, a cross-platform e-commerce application using ReactJS and Node.js, enabling personalized nutritional supplement recommendations based on user data.
+  - Designed and deployed a Microsoft Azure-based machine learning model to classify dietary supplements from images, extracting key product details (e.g., RDA, market data) with 97% Top-5 accuracy.
+  - Engineered a recommendation algorithm that tailors supplement suggestions based on user attributes (age, gender, dietary restrictions, current intake) using Python, enhancing user experience and safety.
+- **Software Developer, Sergeant** · Republic of Korea Air Force — *Sep 2021–Mar 2023*
+  - Built a computer vision model using PyTorch to track bullet marks on targets, replacing the manual evaluation process and accelerating rifle training assessments by 75%.
+  - Launched a suite of features for 5+ military facility websites such as personnel management and room reservation using Vue and Spring Boot, improving operational efficiency.
+  - Refined and maintained databases with 500,000+ entities using MySQL and MySQL Workbench, reducing query processing time by approximately 20% and enhancing nationwide workflow efficiency.
 
-Create content & metadata
-------
-For site content, there is one Markdown file for each type of content, which are stored in directories like _publications, _talks, _posts, _teaching, or _pages. For example, each talk is a Markdown file in the [_talks directory](https://github.com/academicpages/academicpages.github.io/tree/master/_talks). At the top of each Markdown file is structured data in YAML about the talk, which the theme will parse to do lots of cool stuff. The same structured data about a talk is used to generate the list of talks on the [Talks page](https://academicpages.github.io/talks), each [individual page](https://academicpages.github.io/talks/2012-03-01-talk-1) for specific talks, the talks section for the [CV page](https://academicpages.github.io/cv), and the [map of places you've given a talk](https://academicpages.github.io/talkmap.html) (if you run this [python file](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.py) or [Jupyter notebook](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb), which creates the HTML for the map based on the contents of the _talks directory).
+---
 
-**Markdown generator**
+### Education
 
-The repository includes [a set of Jupyter notebooks](https://github.com/academicpages/academicpages.github.io/tree/master/markdown_generator
-) that converts a CSV containing structured data about talks or presentations into individual Markdown files that will be properly formatted for the Academic Pages template. The sample CSVs in that directory are the ones I used to create my own personal website at stuartgeiger.com. My usual workflow is that I keep a spreadsheet of my publications and talks, then run the code in these notebooks to generate the Markdown files, then commit and push them to the GitHub repository.
+- **B.S./M.S. in Computer Science** · Georgia Tech
+  - Expected B.S. Graduation: Spring 2026
+    - Concentration: Info-Internetworks / Intelligence
+  - Expected M.S. Graduation: Spring 2027
+    - Concentration: Machine Learning
 
-How to edit your site's GitHub repository
-------
-Many people use a git client to create files on their local computer and then push them to GitHub's servers. If you are not familiar with git, you can directly edit these configuration and Markdown files directly in the github.com interface. Navigate to a file (like [this one](https://github.com/academicpages/academicpages.github.io/blob/master/_talks/2012-03-01-talk-1.md) and click the pencil icon in the top right of the content preview (to the right of the "Raw | Blame | History" buttons). You can delete a file by clicking the trashcan icon to the right of the pencil icon. You can also create new files or upload files by navigating to a directory and clicking the "Create new file" or "Upload files" buttons. 
-
-Example: editing a Markdown file for a talk
-![Editing a Markdown file for a talk](/images/editing-talk.png)
-
-For more info
-------
-More info about configuring Academic Pages can be found in [the guide](https://academicpages.github.io/markdown/), the [growing wiki](https://github.com/academicpages/academicpages.github.io/wiki), and you can always [ask a question on GitHub](https://github.com/academicpages/academicpages.github.io/discussions). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful.
+---
