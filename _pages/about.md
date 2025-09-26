@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "welcome to min's"
+title: "welcome!"
 author_profile: true
 redirect_from:
   - /about/
