@@ -12,7 +12,7 @@ repository               : "minovermax/minovermax.github.io"
 # Sidebar / Author
 author:
   # Biographic information
-  avatar           : "profile.png"     # place images/profile.png (see note below)
+  avatar           : "profile.jpeg"     # place images/profile.png (see note below)
   name             : "Soungmin (Min) Lee"
   pronouns         :                   # optional
   bio              : "BS/MS CS @ Georgia Tech"
