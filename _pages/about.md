@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Soungmin (Min) Lee"
+title: "welcome to min's"
 author_profile: true
 redirect_from:
   - /about/
