@@ -12,7 +12,7 @@ posterurl: "https://gcb-web-bb21b.web.app/static/poster.pdf"
 codeurl: "https://github.com/gtfintechlab/WorldCentralBanks"
 website: "https://gcb-web-bb21b.web.app/"
 dataseturl: "https://huggingface.co/collections/gtfintechlab/wcb-678965e38178c63158b45fdf"
-citation: 'Agam Shah, Siddhant Sukhani, Huzaifa Pardawala, Saketh Budideti†, Riya Bhadani†, Rudra Gopal†, Siddhartha Somani†, Michael Galarnyk†, Soungmin Lee†. (2025). "Words That Unite The World: A Unified Framework for Deciphering Central Bank Communications Globally." <i>NeurIPS 2025</i>.'
+citation: 'Agam Shah, Siddhant Sukhani, Huzaifa Pardawala, Saketh Budideti†, Riya Bhadani†, Rudra Gopal†, Siddhartha Somani†, Michael Galarnyk†, Soungmin Lee†, et al. (2025). "Words That Unite The World: A Unified Framework for Deciphering Central Bank Communications Globally." <i>NeurIPS 2025</i>.'
 ---
 
 The **World Central Banks (WCB)** paper introduces the most comprehensive dataset of central bank communications to date, spanning **380k+ sentences from 25 central banks across 28 years**.
