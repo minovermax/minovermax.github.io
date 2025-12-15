@@ -16,7 +16,7 @@ redirect_from:
 
 ## Work Experience
 
-* Aug 2025 – Present: **Software Development Engineer Intern**
+* Aug 2025 – Nov 2025: **Software Development Engineer Intern**
   * Amazon Web Services (AWS), Elastic Block Store – VMDS Team
     * Seattle, WA
 
