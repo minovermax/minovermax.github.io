@@ -17,7 +17,7 @@ Currently focused on NLP research and integrating LLM-powered features into web/
 - **Words That Unite The World: A Unified Framework for Deciphering Central Bank Communications Globally**
   - Agam Shah, Siddhant Sukhani, Huzaifa Pardawala, Saketh Budideti†, Riya Bhadani†, Rudra Gopal†, Siddhartha Somani†, Michael Galarnyk†, **Soungmin Lee†**, et al. *NeurIPS 2025* [[Paper]](https://gcb-web-bb21b.web.app/static/pdf/main.pdf) · [[Website]](https://gcb-web-bb21b.web.app/) · [[Dataset]](https://huggingface.co/collections/gtfintechlab/wcb-678965e38178c63158b45fdf) · [[Code]](https://github.com/gtfintechlab/WorldCentralBanks)
 - **HiKE: Hierarchical Evaluation Framework for Korean-English Code-Switching Speech Recognition**
-  - Gio Paik, Yongbeom Kim, **Soungmin Lee**, Sangmin Ahn, Chanwoo Kim. *arXiv preprint (cs.CL)* [[Paper]](https://arxiv.org/pdf/2509.24613) · [[arXiv]](https://arxiv.org/abs/2509.24613) · [[Dataset]](https://huggingface.co/datasets/thetaone-ai/HiKE)
+  - Gio Paik, Yongbeom Kim, **Soungmin Lee**, Sangmin Ahn, Chanwoo Kim. *Findings of EACL 2026* [[Paper]](https://arxiv.org/pdf/2509.24613) · [[arXiv]](https://arxiv.org/abs/2509.24613) · [[Dataset]](https://huggingface.co/datasets/thetaone-ai/HiKE)
 
 ---
 
