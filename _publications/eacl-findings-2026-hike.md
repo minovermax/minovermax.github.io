@@ -5,7 +5,7 @@ category: conferences
 permalink: /publication/2026-hike
 excerpt: "Introduces HiKE, the first globally accessible hierarchical benchmark for Korean-English code-switching speech recognition, featuring loanword-aware annotations and multi-level code-switching labels that enable fine-grained evaluation of multilingual ASR models."
 date: 2026-01-06
-venue: "Findings of EACL 2026"
+venue: "Findings of EACL"
 paperurl: "https://arxiv.org/pdf/2509.24613"
 slidesurl: ""
 posterurl: ""
