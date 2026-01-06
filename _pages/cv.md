@@ -36,10 +36,14 @@ redirect_from:
   * Republic of Korea Air Force (ROKAF), Information Systems Management Group
     * Gyeryong, South Korea
 
+<!-- markdownlint-disable MD033 -->
+
 ## Publications
 
+<ul>
 {% for post in site.publications reversed %}
-
   {% include archive-single-cv.html %}
-
 {% endfor %}
+</ul>
+
+<!-- markdownlint-enable MD033 -->
