@@ -15,7 +15,7 @@ author:
   avatar           : "profile.jpeg"     # place images/profile.png (see note below)
   name             : "Soungmin (Min) Lee"
   pronouns         :                   # optional
-  bio              : "BS/MS CS @ Georgia Tech"
+  bio              : "B.S./M.S. CS @ Georgia Tech"
   location         : "Atlanta, GA"
   employer         :                   # optional (e.g., "Georgia Tech")
   uri              :

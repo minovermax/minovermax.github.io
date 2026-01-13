@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hello, I'm **Soungmin (Min) Lee**, a BS/MS student in Computer Science at **Georgia Tech**, specializing in NLP and web development.
+Hello, I'm **Soungmin (Min) Lee**, a B.S./M.S. student in Computer Science at **Georgia Tech**, specializing in NLP and web development.
 Currently focused on NLP research and integrating LLM-powered features into web/mobile services, I enjoy building software solutions that optimize critical processes and solve complex problems.
 
 ---
