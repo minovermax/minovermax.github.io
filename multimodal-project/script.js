@@ -26,23 +26,27 @@ const revealObserver = new IntersectionObserver(
 
 revealItems.forEach((item) => revealObserver.observe(item));
 
-const fillObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        fillObserver.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.45,
-    rootMargin: "0px 0px -8% 0px",
-  }
-);
+function revealComparisonRows() {
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
-comparisonRows.forEach((row) => fillObserver.observe(row));
+  comparisonRows.forEach((row) => {
+    if (row.classList.contains("is-visible")) {
+      return;
+    }
+
+    const rect = row.getBoundingClientRect();
+    const entersViewport = rect.top <= viewportHeight * 0.82;
+    const remainsOnScreen = rect.bottom >= viewportHeight * 0.15;
+
+    if (entersViewport && remainsOnScreen) {
+      row.classList.add("is-visible");
+    }
+  });
+}
 
 updateScrollProgress();
+revealComparisonRows();
 window.addEventListener("scroll", updateScrollProgress, { passive: true });
+window.addEventListener("scroll", revealComparisonRows, { passive: true });
 window.addEventListener("resize", updateScrollProgress);
+window.addEventListener("resize", revealComparisonRows);
