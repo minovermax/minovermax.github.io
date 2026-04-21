@@ -1,5 +1,6 @@
 const progressBar = document.getElementById("scroll-progress");
 const revealItems = document.querySelectorAll(".reveal");
+const comparisonRows = document.querySelectorAll(".comparison-row");
 
 function updateScrollProgress() {
   const scrollTop = window.scrollY;
@@ -24,6 +25,23 @@ const revealObserver = new IntersectionObserver(
 );
 
 revealItems.forEach((item) => revealObserver.observe(item));
+
+const fillObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        fillObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.45,
+    rootMargin: "0px 0px -8% 0px",
+  }
+);
+
+comparisonRows.forEach((row) => fillObserver.observe(row));
 
 updateScrollProgress();
 window.addEventListener("scroll", updateScrollProgress, { passive: true });

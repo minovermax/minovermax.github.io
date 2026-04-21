@@ -530,12 +530,14 @@ h3 {
 }
 
 .fill {
+  display: block;
   height: 100%;
   width: var(--fill-width);
   border-radius: inherit;
   transform-origin: left center;
   transform: scaleX(0);
   transition: transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .fill-human {
@@ -548,9 +550,15 @@ h3 {
   background: linear-gradient(90deg, rgba(195, 111, 52, 0.72), rgba(71, 101, 124, 0.86));
 }
 
-.comparison-section.is-visible .fill {
+.comparison-row.is-visible .fill {
   transform: scaleX(1);
 }
+
+.comparison-row:nth-child(1) .fill { transition-delay: 120ms; }
+.comparison-row:nth-child(2) .fill { transition-delay: 180ms; }
+.comparison-row:nth-child(3) .fill { transition-delay: 240ms; }
+.comparison-row:nth-child(4) .fill { transition-delay: 300ms; }
+.comparison-row:nth-child(5) .fill { transition-delay: 360ms; }
 
 .comparison-side small {
   display: block;
