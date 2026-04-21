@@ -548,7 +548,7 @@ h3 {
   background: linear-gradient(90deg, rgba(195, 111, 52, 0.72), rgba(71, 101, 124, 0.86));
 }
 
-.comparison-card.is-visible .fill {
+.comparison-section.is-visible .fill {
   transform: scaleX(1);
 }
 
