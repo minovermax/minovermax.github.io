@@ -1,6 +1,6 @@
-# Multimodal Project Page
+# Multimodal Website Page
 
-This folder is a GitHub Pages-ready static version of the AI and Creativity project.
+This folder contains a GitHub Pages-ready static version of the AI and Creativity website.
 
 ## Deploy it to your site
 
