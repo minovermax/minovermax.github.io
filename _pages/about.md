@@ -25,6 +25,8 @@ Currently focused on NLP research and integrating LLM-powered features into web/
 
 ### Career
 
+- **Software Development Engineer Intern** · Amazon Web Services (AWS) · *Jun 2026 – Aug 2026*
+  - Returned to Elastic Block Storage VMDS Team
 - **Software Development Engineer Intern** · Amazon Web Services (AWS) · *Aug 2025 – Nov 2025*
   - Elastic Block Storage VMDS Team
 - **Undergraduate Researcher** · Georgia Tech VIP Program · *Jan 2024 – Aug 2025*
@@ -40,10 +42,9 @@ Currently focused on NLP research and integrating LLM-powered features into web/
   - Developed the frontend and backend of VITAON, a cross-platform e-commerce application using ReactJS and Node.js, enabling personalized nutritional supplement recommendations based on user data.
   - Designed and deployed a Microsoft Azure-based machine learning model to classify dietary supplements from images, extracting key product details (e.g., RDA, market data) with 97% Top-5 accuracy.
   - Engineered a recommendation algorithm that tailors supplement suggestions based on user attributes (age, gender, dietary restrictions, current intake) using Python, enhancing user experience and safety.
-- **Software Developer, Sergeant** · Republic of Korea Air Force · *Sep 2021 – Mar 2023*
-  - Built a computer vision model using PyTorch to track bullet marks on targets, replacing the manual evaluation process and accelerating rifle training assessments by 75%.
-  - Launched a suite of features for 5+ military facility websites such as personnel management and room reservation using Vue and Spring Boot, improving operational efficiency.
-  - Refined and maintained databases with 500,000+ entities using MySQL and MySQL Workbench, reducing query processing time by approximately 20% and enhancing nationwide workflow efficiency.
+- **Mandatory Military Service** · Republic of Korea Air Force · *Sep 2021 – Mar 2023*
+  - Affiliated Unit: Intelligent Information Systems Management Group (지능정보체계관리단)
+  - Tech Summary: Java, JavaScript, Python, ReactJS, ExpressJS, Spring Boot, SQL
 
 ---
 
