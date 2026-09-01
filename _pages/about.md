@@ -42,9 +42,11 @@ Currently focused on NLP research and integrating LLM-powered features into web/
   - Developed the frontend and backend of VITAON, a cross-platform e-commerce application using ReactJS and Node.js, enabling personalized nutritional supplement recommendations based on user data.
   - Designed and deployed a Microsoft Azure-based machine learning model to classify dietary supplements from images, extracting key product details (e.g., RDA, market data) with 97% Top-5 accuracy.
   - Engineered a recommendation algorithm that tailors supplement suggestions based on user attributes (age, gender, dietary restrictions, current intake) using Python, enhancing user experience and safety.
-- **Mandatory Military Service** · Republic of Korea Air Force · *Sep 2021 – Mar 2023*
+- **Software Developer, Sergeant** · Republic of Korea Air Force · Full-time · *Sep 2021 – Mar 2023 · 1 yr 7 mos*
+  - Gyeryong, South Chungcheong, South Korea · On-site
+  - Mandatory Military Service
   - Affiliated Unit: Intelligent Information Systems Management Group (지능정보체계관리단)
-  - Tech Summary: Java, JavaScript, Python, ReactJS, ExpressJS, Spring Boot, SQL
+  - Tech Summary: Java, Javascript, Python, ReactJS, ExpressJS, SpringBoot, SQL
 
 ---
 
