@@ -1,0 +1,296 @@
+---
+---
+{% comment %}
+  Standalone homepage layout. It does not load the template's main.css,
+  so everything it needs lives in assets/css/home.css and assets/js/home.js.
+{% endcomment %}
+{% assign pubs = site.publications | sort: "date" | reverse %}
+{% assign latest = pubs.first %}
+{% assign posts = site.posts | where_exp: "post", "post.hidden != true" %}
+{% assign author = site.author %}
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% include seo.html %}
+  <script>
+    document.documentElement.classList.replace("no-js", "js");
+    try {
+      if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light");
+    } catch (e) {}
+  </script>
+  <meta name="theme-color" content="#0d1210">
+  <link rel="icon" type="image/svg+xml" href="{{ '/images/favicon.svg' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon-180x180.png' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" href="{{ '/feed.xml' | relative_url }}" title="{{ site.title }}">
+</head>
+<body>
+  <a class="skip mono" href="#main">skip to content</a>
+
+  <header class="bar" data-bar>
+    <div class="bar__left">
+      <a class="bar__name" href="#top">{{ page.wordmark }}</a>
+      {% if latest %}
+      <p class="bar__status mono">
+        <span class="dot" aria-hidden="true"></span>
+        <span>latest</span><span class="sep" aria-hidden="true">/</span>
+        <span>{{ latest.date | date: "%b %Y" | downcase }}</span><span class="sep" aria-hidden="true">/</span>
+        <a href="#research">{{ latest.title | split: ":" | first | downcase }} <span aria-hidden="true">→</span></a>
+      </p>
+      {% endif %}
+    </div>
+    <nav class="bar__actions" aria-label="Quick actions">
+      <button class="btn btn--icon" type="button" data-theme-toggle aria-label="Toggle light and dark theme">
+        <span class="theme-glyph" aria-hidden="true"></span>
+      </button>
+      <a class="btn btn--hide-sm" href="#contact"><span class="dot" aria-hidden="true"></span>contact</a>
+      <button class="btn" type="button" data-menu-open aria-controls="menu" aria-expanded="false">
+        <span class="burger" aria-hidden="true"></span>menu
+      </button>
+    </nav>
+  </header>
+
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+    <div class="menu__top wrap">
+      <span class="mono muted">index</span>
+      <button class="btn" type="button" data-menu-close>close <span aria-hidden="true">×</span></button>
+    </div>
+    <nav class="menu__list wrap" aria-label="Sections">
+      <a href="#about"><span class="mono">01</span>about</a>
+      <a href="#research"><span class="mono">02</span>research</a>
+      <a href="#work"><span class="mono">03</span>work</a>
+      <a href="#projects"><span class="mono">04</span>projects</a>
+      <a href="#contact"><span class="mono">05</span>contact</a>
+    </nav>
+    <div class="menu__pages wrap">
+      <p class="label-rule">pages</p>
+      <ul>
+        {% for link in site.data.navigation.main %}
+        <li><a href="{{ link.url | relative_url }}">{{ link.title | downcase }} <span aria-hidden="true">↗</span></a></li>
+        {% endfor %}
+        <li><a href="{{ '/min-lee-resume/' | relative_url }}">resume <span aria-hidden="true">↗</span></a></li>
+      </ul>
+    </div>
+    <p class="menu__sys wrap mono muted">user@{{ author.github }} <span aria-hidden="true">//</span> ver. {{ site.time | date: "%Y.%m.%d" }}</p>
+  </div>
+
+  <aside class="rail" aria-label="Elsewhere">
+    {% if author.github %}<a href="https://github.com/{{ author.github }}" aria-label="GitHub"><i class="ico ico--gh" aria-hidden="true"></i></a>{% endif %}
+    {% if author.linkedin %}<a href="https://www.linkedin.com/in/{{ author.linkedin }}" aria-label="LinkedIn"><i class="ico ico--in" aria-hidden="true"></i></a>{% endif %}
+    {% if author.email %}<a href="mailto:{{ author.email }}" aria-label="Email"><i class="ico ico--mail" aria-hidden="true"></i></a>{% endif %}
+    <a href="#top" aria-label="Back to top"><span aria-hidden="true">↑</span></a>
+  </aside>
+
+  <a class="tab" href="{{ '/min-lee-resume/' | relative_url }}">resume</a>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <img class="hero__img" src="{{ '/images/profile.jpeg' | relative_url }}" alt="Portrait of {{ author.name }}" width="1236" height="1236" fetchpriority="high">
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="hero__inner wrap">
+        <h1 class="hero__mark" aria-label="{{ author.name }}">{{ page.wordmark }}</h1>
+        <div class="hero__meta mono">
+          <span>{{ author.name | downcase }}</span>
+          <span>{{ page.focus }}</span>
+          <span>{{ author.location | downcase }} <span class="hero__clock" data-clock></span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec wrap" id="about">
+      <div class="sec-head" data-reveal>
+        <span class="sec-head__dash" aria-hidden="true"></span>
+        <h2>about</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__note mono">{{ site.data.education.first.school | downcase }}</span>
+      </div>
+      <div class="who" data-reveal>
+        <span class="tag mono">who</span>
+        <div class="who__main">
+          <p class="big">{{ page.statement }}</p>
+          <div class="who__body">{{ content }}</div>
+        </div>
+        <dl class="facts mono">
+          {% for d in site.data.education %}
+          <div>
+            <dt>{{ d.year }}</dt>
+            <dd>{{ d.degree | downcase }}<br><span class="muted">{{ d.focus | downcase }} · {{ d.school | downcase }}</span></dd>
+          </div>
+          {% endfor %}
+          <div>
+            <dt>based</dt>
+            <dd>{{ author.location | downcase }}</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="sec wrap" id="research">
+      <div class="sec-head" data-reveal>
+        <span class="sec-head__dash" aria-hidden="true"></span>
+        <h2>research</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__note mono">{% if pubs.size < 10 %}0{% endif %}{{ pubs.size }} papers</span>
+      </div>
+
+      {% if latest %}
+      {% assign venue = latest.citation | split: "<i>" | last | split: "</i>" | first | default: latest.venue %}
+      <article class="feature" data-reveal>
+        <div class="feature__meta mono">
+          <span class="accent"><span class="dot" aria-hidden="true"></span>latest</span>
+          <span>{{ latest.date | date: "%Y.%m" }}</span>
+          <span class="muted">{{ venue | downcase }}</span>
+        </div>
+        <div class="feature__main">
+          <h3 class="feature__title"><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h3>
+          <p class="authors">{{ latest.citation | split: ". (" | first | replace: "et al", "et al." | replace: "Soungmin Lee", "<b>Soungmin Lee</b>" }}</p>
+          <p class="feature__excerpt">{{ latest.excerpt | strip_html }}</p>
+          <div class="links">
+            {% if latest.paperurl %}<a class="btn btn--solid" href="{{ latest.paperurl }}">read paper <span aria-hidden="true">▸</span></a>{% endif %}
+            {% include home/pub-links.html pub=latest %}
+          </div>
+        </div>
+      </article>
+      {% endif %}
+
+      <ol class="pubs" reversed>
+        {% for pub in pubs offset: 1 %}
+        {% assign venue = pub.citation | split: "<i>" | last | split: "</i>" | first | default: pub.venue %}
+        <li class="pub" data-reveal>
+          <div class="pub__when mono">
+            <span>{{ pub.date | date: "%Y.%m" }}</span>
+            <span class="muted">{{ venue | downcase }}</span>
+          </div>
+          <div class="pub__main">
+            <h3 class="pub__title"><a href="{{ pub.url | relative_url }}">{{ pub.title }}</a></h3>
+            <p class="authors">{{ pub.citation | split: ". (" | first | replace: "et al", "et al." | replace: "Soungmin Lee", "<b>Soungmin Lee</b>" }}</p>
+            <div class="links">{% include home/pub-links.html pub=pub %}</div>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+      <p class="footnote mono muted">† core contributor <span aria-hidden="true">·</span> <a href="{{ '/publications/' | relative_url }}">all publications →</a></p>
+    </section>
+
+    <section class="sec wrap" id="work">
+      <div class="sec-head" data-reveal>
+        <span class="sec-head__dash" aria-hidden="true"></span>
+        <h2>work</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__note mono">since {{ site.data.experience.last.start | split: "." | first }}</span>
+      </div>
+      <ol class="jobs">
+        {% for job in site.data.experience %}
+        <li data-reveal>
+          <details class="job">
+            <summary>
+              <span class="job__when mono">{{ job.start }} — {{ job.end }}</span>
+              <span class="job__what">
+                <span class="job__role">{{ job.role }}</span>
+                <span class="job__org">{{ job.org }}</span>
+              </span>
+              <span class="job__where mono muted">{% if job.team != "" %}{{ job.team | downcase }}<br>{% endif %}{{ job.location | downcase }}</span>
+              <span class="job__toggle" aria-hidden="true"></span>
+            </summary>
+            <ul class="job__body">
+              {% for b in job.bullets %}<li>{{ b }}</li>{% endfor %}
+            </ul>
+          </details>
+        </li>
+        {% endfor %}
+      </ol>
+      <p class="footnote mono muted"><a href="{{ '/cv/' | relative_url }}">full cv →</a></p>
+    </section>
+
+    <section class="sec wrap" id="projects">
+      <div class="sec-head" data-reveal>
+        <span class="sec-head__dash" aria-hidden="true"></span>
+        <h2>projects</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__note mono">builds &amp; notes</span>
+      </div>
+      <div class="tiles" data-reveal>
+        {% for item in site.portfolio %}
+        <a class="tile" href="{{ item.url | relative_url }}">
+          <span class="tile__top mono"><span>p.{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><span class="tile__arrow" aria-hidden="true">↗</span></span>
+          <span class="tile__bottom">
+            <span class="tile__name">{{ item.title }}</span>
+            <span class="tile__sub">{{ item.excerpt | strip_html | strip }}</span>
+          </span>
+        </a>
+        {% endfor %}
+      </div>
+
+      {% if posts.size > 0 %}
+      <div class="notes" data-reveal>
+        <p class="label-rule">writing</p>
+        <ul>
+          {% for post in posts limit: 4 %}
+          <li>
+            <a href="{{ post.url | relative_url }}">
+              <span class="mono muted">{{ post.date | date: "%Y.%m.%d" }}</span>
+              <span class="notes__title">{{ post.title }}</span>
+              <span class="notes__go mono" aria-hidden="true">read →</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </section>
+
+    <section class="sec sec--last wrap" id="contact">
+      <div class="sec-head" data-reveal>
+        <span class="sec-head__dash" aria-hidden="true"></span>
+        <h2>contact</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__note mono">say hi</span>
+      </div>
+      <div class="who" data-reveal>
+        <span class="tag mono">inquiries</span>
+        <div class="who__main">
+          <p class="big">{{ page.contact_line }}</p>
+        </div>
+      </div>
+      <div class="tiles tiles--links" data-reveal>
+        {% if author.email %}
+        <a class="tile tile--link" href="mailto:{{ author.email }}">
+          <span class="tile__top"><i class="ico ico--mail" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
+          <span class="tile__bottom"><span class="tile__name">email</span><span class="tile__sub mono">{{ author.email }}</span></span>
+        </a>
+        {% endif %}
+        {% if author.github %}
+        <a class="tile tile--link" href="https://github.com/{{ author.github }}">
+          <span class="tile__top"><i class="ico ico--gh" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
+          <span class="tile__bottom"><span class="tile__name">github</span><span class="tile__sub mono">@{{ author.github }}</span></span>
+        </a>
+        {% endif %}
+        {% if author.linkedin %}
+        <a class="tile tile--link" href="https://www.linkedin.com/in/{{ author.linkedin }}">
+          <span class="tile__top"><i class="ico ico--in" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
+          <span class="tile__bottom"><span class="tile__name">linkedin</span><span class="tile__sub mono">in/{{ author.linkedin }}</span></span>
+        </a>
+        {% endif %}
+        <a class="tile tile--link" href="{{ '/min-lee-resume/' | relative_url }}">
+          <span class="tile__top"><i class="ico ico--doc" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
+          <span class="tile__bottom"><span class="tile__name">resume</span><span class="tile__sub mono">web · pdf</span></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot wrap mono muted">
+    <span>© {{ site.time | date: "%Y" }} {{ author.name | downcase }}</span>
+    <span>{{ author.location | downcase }} <span aria-hidden="true">//</span> ver. {{ site.time | date: "%Y.%m.%d" }}</span>
+    <a href="#top">top <span aria-hidden="true">↑</span></a>
+  </footer>
+
+  <script src="{{ '/assets/js/home.js' | relative_url }}" defer></script>
+</body>
+</html>

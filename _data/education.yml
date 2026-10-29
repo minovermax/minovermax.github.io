@@ -1,0 +1,11 @@
+# Degrees shown in the homepage "who" section.
+
+- degree: "M.S. Computer Science"
+  focus: "Machine Learning"
+  school: "Georgia Tech"
+  year: "exp. 2027"
+
+- degree: "B.S. Computer Science"
+  focus: "Info-Internetworks / Intelligence"
+  school: "Georgia Tech"
+  year: "2026"

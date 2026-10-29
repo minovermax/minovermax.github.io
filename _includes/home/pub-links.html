@@ -1,0 +1,17 @@
+{% comment %}
+  Link chips for one publication. Usage: {% include home/pub-links.html pub=post %}
+{% endcomment %}
+{% assign p = include.pub %}
+{% if p.paperurl and p.paperurl != "" %}
+  <a class="chip" href="{{ p.paperurl }}">paper <span aria-hidden="true">↗</span></a>
+  {% if p.paperurl contains "arxiv.org/pdf/" %}
+    <a class="chip" href="{{ p.paperurl | replace: '/pdf/', '/abs/' }}">arxiv <span aria-hidden="true">↗</span></a>
+  {% endif %}
+{% endif %}
+{% if p.codeurl and p.codeurl != "" %}<a class="chip" href="{{ p.codeurl }}">code <span aria-hidden="true">↗</span></a>{% endif %}
+{% if p.dataseturl and p.dataseturl != "" %}<a class="chip" href="{{ p.dataseturl }}">dataset <span aria-hidden="true">↗</span></a>{% endif %}
+{% if p.posterurl and p.posterurl != "" %}<a class="chip" href="{{ p.posterurl }}">poster <span aria-hidden="true">↗</span></a>{% endif %}
+{% if p.slidesurl and p.slidesurl != "" %}<a class="chip" href="{{ p.slidesurl }}">slides <span aria-hidden="true">↗</span></a>{% endif %}
+{% if p.website and p.website != "" %}
+  <a class="chip" href="{{ p.website }}">{% if p.website contains "huggingface.co" %}hugging face{% else %}website{% endif %} <span aria-hidden="true">↗</span></a>
+{% endif %}

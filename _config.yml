@@ -5,7 +5,7 @@ title                    : "min's"
 title_separator          : "-"
 name                     : &name "min's"
 description              : &description "CS @ Georgia Tech · NLP, Speech, Applied ML"
-url                      : https://minovermax.github.io   # user site
+url                      : https://min.is-a.dev           # custom domain (is-a.dev), see CNAME
 baseurl                  : ""                              # user site = empty
 repository               : "minovermax/minovermax.github.io"
 
