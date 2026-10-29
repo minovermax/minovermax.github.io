@@ -46,7 +46,7 @@ photos:
     src: /images/photos/alex-columbus.webp
     alt: "A white dog lying on wet rocks in low sun"
     caption: "alex, my dog"
-    source: "columbus, ga"
+    source: "flat rock park, columbus"
     credit: "photo by me"
     width: 1600
     height: 1200
