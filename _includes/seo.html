@@ -6,9 +6,17 @@
 {% endif %}
 {% assign seo_url = seo_url | default: site.github.url %}
 
-{% comment %} the homepage tab is just the site name; its title still feeds og/twitter below {% endcomment %}
+{% comment %}
+  Tabs: home is just the site name, pages read "min's Research", and items in a
+  collection (papers, posts, projects) keep their long title first: "Title - min's".
+  The page title still feeds og/twitter below.
+{% endcomment %}
 {% if page.title and page.url != "/" %}
-  {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: site.title %}
+  {% if page.collection %}
+    {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: site.title %}
+  {% else %}
+    {% assign seo_title = site.title | append: " " | append: page.title %}
+  {% endif %}
 {% endif %}
 
 {% if seo_title %}
