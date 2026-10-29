@@ -37,8 +37,8 @@ photos:
   work:
     src: /images/photos/installation-wide.webp
     alt: "Adrián Villar Rojas' installation The Language of the Enemy at Art Sonje Center: scorched metal, cables and roots hanging in a gallery"
-    caption: "the language of the enemy"
-    source: "adrián villar rojas, art sonje center"
+    caption: "adrián villar rojas, the language of the enemy"
+    source: "art sonje center, seoul"
     credit: "photo by me"
     width: 1280
     height: 960
