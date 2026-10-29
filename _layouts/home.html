@@ -189,6 +189,6 @@ layout: default
         <span class="tile__bottom"><span class="tile__name">resume</span><span class="tile__sub mono">web · pdf</span></span>
       </a>
     </div>
-    {% if photo_found and photos.contact.caption %}<p class="sec__credit mono"><span class="accent">fig.</span> {{ photos.contact.caption }}</p>{% endif %}
+    {% if photo_found and photos.contact.caption %}{% include site/photo-caption.html photo=photos.contact tag="p" class="sec__credit" %}{% endif %}
   </div>
 </section>

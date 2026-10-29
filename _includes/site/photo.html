@@ -1,5 +1,5 @@
 {% comment %}
-  A photo from front matter ({ src, alt, caption, width, height }), rendered only if the file
+  A photo from front matter ({ src, alt, caption, source, credit, width, height }), rendered only if the file
   exists, so a slot can be filled later just by adding the image.
   Usage: {% include site/photo.html photo=page.photos.research class="cover" %}
   With check_only=true it renders nothing and just sets `photo_found`.
@@ -14,6 +14,6 @@
   <div class="photo__frame">
     <img src="{{ include.photo.src | relative_url }}" alt="{{ include.photo.alt }}"{% if include.photo.width %} width="{{ include.photo.width }}" height="{{ include.photo.height }}"{% endif %} loading="lazy">
   </div>
-  {% if include.photo.caption %}<figcaption class="mono"><span class="accent">fig.</span><span class="muted">{{ include.photo.caption }}</span></figcaption>{% endif %}
+  {% if include.photo.caption %}{% include site/photo-caption.html photo=include.photo %}{% endif %}
 </figure>
 {% endif %}

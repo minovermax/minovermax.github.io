@@ -12,6 +12,7 @@ statement: "language, speech, and the software around them."
 contact_line: "research, internships, or just to say hi. email is the fastest way to reach me."
 # Photos placed through the homepage, one per section (files live in images/photos/).
 # A slot whose file doesn't exist yet is skipped, so it shows up once the file is added.
+# Captions read "fig. caption / source / credit"; source and credit are optional.
 photos:
   hero:
     src: /images/photos/paper-cat.webp
@@ -26,14 +27,18 @@ photos:
     height: 900
   research:
     src: /images/photos/ghibli-museum.webp
-    alt: "The robot soldier statue on the Ghibli Museum rooftop at dusk"
-    caption: "ghibli museum"
+    alt: "The robot soldier from Castle in the Sky on the Ghibli Museum rooftop at dusk"
+    caption: "robot soldier, castle in the sky"
+    source: "ghibli museum, mitaka"
+    credit: "photo by me"
     width: 1200
     height: 1600
   work:
     src: /images/photos/installation-wide.webp
-    alt: "A large installation of scorched metal, cables and roots hanging in a gallery"
-    caption: "installation"
+    alt: "Adrián Villar Rojas' installation The Language of the Enemy at Art Sonje Center: scorched metal, cables and roots hanging in a gallery"
+    caption: "the language of the enemy"
+    source: "adrián villar rojas, art sonje center"
+    credit: "photo by me"
     width: 1280
     height: 960
   projects:
@@ -44,8 +49,10 @@ photos:
     height: 961
   writing:
     src: /images/photos/installation-tall.webp
-    alt: "Close-up of folded steel shards in the installation"
-    caption: "installation, detail"
+    alt: "Close-up of folded steel shards in Adrián Villar Rojas' The Language of the Enemy"
+    caption: "the language of the enemy, detail"
+    source: "adrián villar rojas, art sonje center"
+    credit: "photo by me"
     width: 900
     height: 1200
   contact:

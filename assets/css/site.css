@@ -843,10 +843,15 @@ ol {
   filter: var(--grade-hover);
 }
 
-.photo figcaption {
+.photo__caption {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 2px;
   margin-top: 10px;
+}
+
+.photo__caption .sep {
+  color: var(--line-strong);
 }
 
 /* about: portrait under the "who" label */
@@ -934,14 +939,6 @@ ol {
 
 .cover {
   max-width: 560px;
-}
-
-.cover .photo__frame {
-  transition: transform 0.35s var(--ease);
-}
-
-.cover:hover .photo__frame {
-  transform: rotate(-1.2deg) scale(1.01);
 }
 
 .cover img {
@@ -1830,9 +1827,9 @@ ol {
 }
 
 .sec__credit {
+  align-items: flex-end;
   margin-top: clamp(40px, 5vw, 64px);
   text-align: right;
-  color: var(--muted);
 }
 
 /* ---------- footer ---------- */

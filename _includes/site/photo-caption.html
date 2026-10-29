@@ -1,0 +1,10 @@
+{% comment %}
+  Two-line caption under a photo: "fig. caption" then "source / credit".
+  Usage: {% include site/photo-caption.html photo=page.photos.work tag="p" %}
+{% endcomment %}
+{% assign tag = include.tag | default: "figcaption" %}
+{% assign p = include.photo %}
+<{{ tag }} class="mono photo__caption{% if include.class %} {{ include.class }}{% endif %}">
+  <span><span class="accent">fig.</span> {{ p.caption }}</span>
+  {% if p.source or p.credit %}<span class="muted">{{ p.source }}{% if p.source and p.credit %} <span class="sep" aria-hidden="true">/</span> {% endif %}{{ p.credit }}</span>{% endif %}
+</{{ tag }}>
