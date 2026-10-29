@@ -45,6 +45,7 @@ photos:
     src: /images/photos/alex-columbus.webp
     alt: "A white dog lying on wet rocks in low sun"
     caption: "alex · columbus"
+    credit: "photo by me"
     width: 1600
     height: 1200
 ---

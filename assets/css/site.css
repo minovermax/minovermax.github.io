@@ -28,9 +28,9 @@
   --hero-ink: #f2f4f7;
 
   /* one grade for every photo so they sit in the palette instead of looking pasted in */
-  --grade: saturate(0.56) contrast(1.06) brightness(0.9);
-  --grade-hover: saturate(0.72) contrast(1.04) brightness(0.96);
-  --grade-tint: rgba(70, 112, 165, 0.3);
+  --grade: saturate(0.78) contrast(1.03) brightness(0.97);
+  --grade-hover: saturate(0.9) contrast(1.02) brightness(1);
+  --grade-tint: rgba(70, 112, 165, 0.16);
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 
   --font-sans: "Helvetica Neue", Helvetica, "Inter Tight", Arial, sans-serif;
@@ -65,6 +65,8 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* keep the scrollbar's space when the menu locks scrolling, so the bar doesn't shift */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -251,7 +253,63 @@ ol {
   position: relative;
   width: 12px;
   height: 7px;
-  border-block: 1px solid currentColor;
+}
+
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transition: top 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.burger::before {
+  top: 0;
+}
+
+.burger::after {
+  top: 6px;
+}
+
+[aria-expanded="true"] > .burger::before {
+  top: 3px;
+  transform: rotate(45deg);
+}
+
+[aria-expanded="true"] > .burger::after {
+  top: 3px;
+  transform: rotate(-45deg);
+}
+
+/* both words share one cell, so the button keeps its width while they swap */
+.btn__swap {
+  display: inline-grid;
+  overflow: hidden;
+  height: 1.25em;
+  line-height: 1.25em;
+}
+
+.btn__swap > span {
+  grid-area: 1 / 1;
+  transition: transform 0.45s var(--ease), opacity 0.3s var(--ease);
+}
+
+.btn__swap > span:last-child {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+[aria-expanded="true"] .btn__swap > span:first-child {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+[aria-expanded="true"] .btn__swap > span:last-child {
+  opacity: 1;
+  transform: none;
 }
 
 .theme-glyph {
@@ -413,36 +471,69 @@ ol {
 
 /* ---------- menu overlay ---------- */
 
+/* sits under the bar (z 40) so the bar's menu button can act as close */
 .menu {
   position: fixed;
   inset: 0;
-  z-index: 60;
+  z-index: 35;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  padding-top: 68px;
   background: var(--bg);
   color: var(--ink);
-  animation: menu-in 0.45s var(--ease);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), visibility 0s linear 0.45s;
 }
 
-.menu[hidden] {
-  display: none;
+.menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), visibility 0s;
 }
 
-@keyframes menu-in {
+.menu__label {
+  max-width: none;
+  padding-top: clamp(20px, 4vh, 40px);
+}
+
+.menu.is-open .menu__list a {
+  animation: menu-item-in 0.7s var(--ease) backwards;
+  animation-delay: calc(0.08s + var(--i) * 50ms);
+}
+
+@keyframes menu-item-in {
   from {
     opacity: 0;
-    transform: translateY(-12px);
+    transform: translateY(0.35em);
   }
 }
 
-.menu__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: none;
-  height: 68px;
-  flex: none;
+/* while the menu is open the bar becomes part of it */
+.menu-open .bar {
+  --btn-line: var(--line-strong);
+  --btn-bg: transparent;
+
+  color: var(--ink);
+  background: var(--bg);
+  border-bottom-color: var(--line);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.menu-open .bar__name {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.menu-open .bar__status {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
 }
 
 .menu__list {
@@ -834,7 +925,7 @@ ol {
 .photo__frame::after {
   z-index: 2;
   background: var(--grain);
-  opacity: 0.2;
+  opacity: 0.14;
   mix-blend-mode: overlay;
 }
 
@@ -2061,8 +2152,8 @@ ol {
     height: 60px;
   }
 
-  .menu__top {
-    height: 60px;
+  .menu {
+    padding-top: 60px;
   }
 
   .btn--hide-sm {

@@ -27,31 +27,31 @@
     ).observe(hero);
   }
 
-  // Menu overlay.
+  // Menu: the bar's menu button opens the overlay and becomes its close button.
   var menu = document.getElementById("menu");
-  var openButton = document.querySelector("[data-menu-open]");
-  var closeButton = document.querySelector("[data-menu-close]");
+  var toggle = document.querySelector("[data-menu-toggle]");
 
   function setMenu(open) {
-    menu.hidden = !open;
+    menu.classList.toggle("is-open", open);
+    menu.inert = !open;
+    menu.setAttribute("aria-hidden", String(!open));
     body.classList.toggle("menu-open", open);
-    openButton.setAttribute("aria-expanded", String(open));
-    if (open) closeButton.focus();
-    else openButton.focus({ preventScroll: true });
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   }
 
-  if (menu && openButton && closeButton) {
-    openButton.addEventListener("click", function () {
-      setMenu(true);
+  if (menu && toggle) {
+    toggle.addEventListener("click", function () {
+      setMenu(!menu.classList.contains("is-open"));
     });
-    closeButton.addEventListener("click", function () {
-      setMenu(false);
-    });
-    menu.addEventListener("click", function (event) {
-      if (event.target.closest("a")) setMenu(false);
+    // following any link while the menu is open (in it or in the bar) closes it
+    document.addEventListener("click", function (event) {
+      if (menu.classList.contains("is-open") && event.target.closest("#menu a, .bar a")) setMenu(false);
     });
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && !menu.hidden) setMenu(false);
+      if (event.key !== "Escape" || !menu.classList.contains("is-open")) return;
+      setMenu(false);
+      toggle.focus();
     });
   }
 

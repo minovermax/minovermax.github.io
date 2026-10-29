@@ -1,6 +1,7 @@
 {% comment %}
   Fixed top bar + full-screen menu. On the homepage the left side shows the
   latest paper over the hero; elsewhere it shows "min lee / <section>".
+  The menu opens under the bar, and the bar's menu button turns into "close".
 {% endcomment %}
 {% assign home = '/' | relative_url %}
 {% case page.collection %}
@@ -35,23 +36,21 @@
       <span class="theme-glyph" aria-hidden="true"></span>
     </button>
     <a class="btn btn--hide-sm" href="{{ home }}#contact"><span class="dot" aria-hidden="true"></span>contact</a>
-    <button class="btn" type="button" data-menu-open aria-controls="menu" aria-expanded="false">
-      <span class="burger" aria-hidden="true"></span>menu
+    <button class="btn btn--menu" type="button" data-menu-toggle aria-controls="menu" aria-expanded="false" aria-label="Open menu">
+      <span class="burger" aria-hidden="true"></span>
+      <span class="btn__swap" aria-hidden="true"><span>menu</span><span>close</span></span>
     </button>
   </nav>
 </header>
 
-<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
-  <div class="menu__top wrap">
-    <span class="mono muted">index</span>
-    <button class="btn" type="button" data-menu-close>close <span aria-hidden="true">×</span></button>
-  </div>
+<div class="menu" id="menu" aria-label="Site menu" aria-hidden="true" inert>
+  <p class="menu__label wrap mono muted">index</p>
   <nav class="menu__list wrap" aria-label="Sections">
-    <a href="{{ home }}#about"><span class="mono">01</span>about</a>
-    <a href="{{ home }}#research"><span class="mono">02</span>research</a>
-    <a href="{{ home }}#work"><span class="mono">03</span>work</a>
-    <a href="{{ home }}#projects"><span class="mono">04</span>projects</a>
-    <a href="{{ home }}#contact"><span class="mono">05</span>contact</a>
+    <a href="{{ home }}#about" style="--i: 0"><span class="mono">01</span>about</a>
+    <a href="{{ home }}#research" style="--i: 1"><span class="mono">02</span>research</a>
+    <a href="{{ home }}#work" style="--i: 2"><span class="mono">03</span>work</a>
+    <a href="{{ home }}#projects" style="--i: 3"><span class="mono">04</span>projects</a>
+    <a href="{{ home }}#contact" style="--i: 4"><span class="mono">05</span>contact</a>
   </nav>
   <div class="menu__pages wrap">
     <p class="label-rule">pages</p>
