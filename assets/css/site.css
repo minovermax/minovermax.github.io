@@ -10,6 +10,12 @@
 }
 
 @font-face {
+  font-family: "academicons";
+  src: url("../fonts/academicons.woff") format("woff");
+  font-display: block;
+}
+
+@font-face {
   font-family: "fa-solid";
   src: url("../webfonts/fa-solid-900.woff2") format("woff2");
   font-weight: 900;
@@ -175,7 +181,7 @@ ol {
   transform: none;
 }
 
-/* ---------- icons (Font Awesome glyphs from assets/webfonts) ---------- */
+/* ---------- icons (Font Awesome + Academicons glyphs from assets/) ---------- */
 
 .ico {
   display: inline-block;
@@ -198,6 +204,11 @@ ol {
   font-family: "fa-solid";
   font-weight: 900;
   content: "\f0e0";
+}
+
+.ico--scholar::before {
+  font-family: "academicons";
+  content: "\e9d4";
 }
 
 .ico--doc::before {
@@ -2189,6 +2200,10 @@ ol {
 
   .tile--link .tile__name {
     font-size: 20px;
+  }
+
+  .tiles--links > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .article__nav {

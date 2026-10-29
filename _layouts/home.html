@@ -85,7 +85,7 @@ layout: default
   <ol class="pubs" reversed>
     {% for pub in pubs offset: 1 %}{% include site/pub-row.html pub=pub %}{% endfor %}
   </ol>
-  <p class="footnote mono muted"><a href="{{ '/research/' | relative_url }}">all research →</a></p>
+  <p class="footnote mono muted"><a href="{{ '/research/' | relative_url }}">all research →</a>{% if author.googlescholar %} <span aria-hidden="true">·</span> <a href="{{ author.googlescholar }}">google scholar ↗</a>{% endif %}</p>
 </section>
 
 <section class="sec wrap" id="work">
@@ -170,6 +170,12 @@ layout: default
       <a class="tile tile--link" href="mailto:{{ author.email }}">
         <span class="tile__top"><i class="ico ico--mail" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
         <span class="tile__bottom"><span class="tile__name">email</span><span class="tile__sub mono">{{ author.email }}</span></span>
+      </a>
+      {% endif %}
+      {% if author.googlescholar %}
+      <a class="tile tile--link" href="{{ author.googlescholar }}">
+        <span class="tile__top"><i class="ico ico--scholar" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
+        <span class="tile__bottom"><span class="tile__name">scholar</span><span class="tile__sub mono">google scholar</span></span>
       </a>
       {% endif %}
       {% if author.github %}

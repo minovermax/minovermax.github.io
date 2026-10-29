@@ -14,6 +14,7 @@ note: "curriculum vitae"
 <div class="links cv-actions">
   <a class="btn btn--solid" href="{{ '/min-lee-resume/resume.pdf' | relative_url }}">download pdf <span aria-hidden="true">▸</span></a>
   <a class="chip" href="{{ '/min-lee-resume/' | relative_url }}">web resume <span aria-hidden="true">↗</span></a>
+  {% if site.author.googlescholar %}<a class="chip" href="{{ site.author.googlescholar }}">google scholar <span aria-hidden="true">↗</span></a>{% endif %}
   {% if site.author.email %}<a class="chip" href="mailto:{{ site.author.email }}">email <span aria-hidden="true">↗</span></a>{% endif %}
 </div>
 

@@ -21,6 +21,7 @@
   <aside class="rail" aria-label="Elsewhere">
     {% if site.author.github %}<a href="https://github.com/{{ site.author.github }}" aria-label="GitHub"><i class="ico ico--gh" aria-hidden="true"></i></a>{% endif %}
     {% if site.author.linkedin %}<a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn"><i class="ico ico--in" aria-hidden="true"></i></a>{% endif %}
+    {% if site.author.googlescholar %}<a href="{{ site.author.googlescholar }}" aria-label="Google Scholar"><i class="ico ico--scholar" aria-hidden="true"></i></a>{% endif %}
     {% if site.author.email %}<a href="mailto:{{ site.author.email }}" aria-label="Email"><i class="ico ico--mail" aria-hidden="true"></i></a>{% endif %}
     <a href="#top" aria-label="Back to top"><span aria-hidden="true">↑</span></a>
   </aside>
