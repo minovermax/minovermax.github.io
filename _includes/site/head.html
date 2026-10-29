@@ -8,11 +8,12 @@
   } catch (e) {}
 </script>
 <meta name="theme-color" content="#0c1016">
-{% comment %} black-cat icon; bump v= when the icon files change so browsers refetch {% endcomment %}
-<link rel="icon" href="{{ '/favicon.ico' | relative_url }}?v=3" sizes="16x16 32x32 48x48">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}?v=3">
-<link rel="icon" type="image/png" sizes="192x192" href="{{ '/images/favicon-192x192.png' | relative_url }}?v=3">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon-180x180.png' | relative_url }}?v=3">
+{% comment %} black-cat icon: vector SVG first, rasters for browsers without SVG favicons; bump v= when they change {% endcomment %}
+<link rel="icon" type="image/svg+xml" href="{{ '/images/favicon.svg' | relative_url }}?v=4">
+<link rel="icon" href="{{ '/favicon.ico' | relative_url }}?v=4" sizes="16x16 32x32 48x48 64x64 128x128 256x256">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}?v=4">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ '/images/favicon-192x192.png' | relative_url }}?v=4">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon-180x180.png' | relative_url }}?v=4">
 <link rel="manifest" href="{{ '/images/manifest.json' | relative_url }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
