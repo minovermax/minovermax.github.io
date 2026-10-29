@@ -135,10 +135,12 @@ layout: default
   {% include site/photo.html photo=photos.projects check_only=true %}
   <div class="projects{% if photo_found %} projects--photo{% endif %}" data-reveal>
     <div class="tiles">
-      {% assign projects = site.portfolio | sort: "order", "last" %}{% for item in projects %}{% include site/project-tile.html item=item index=forloop.index %}{% endfor %}
+      {% comment %} the two lowest `order` values sit beside the photo; everything is on /projects/ {% endcomment %}
+      {% assign projects = site.portfolio | sort: "order", "last" %}{% for item in projects limit: 2 %}{% include site/project-tile.html item=item index=forloop.index %}{% endfor %}
     </div>
     {% include site/photo.html photo=photos.projects class="projects__photo" %}
   </div>
+  <p class="footnote mono muted"><a href="{{ '/projects/' | relative_url }}">all projects{% if projects.size > 2 %} ({{ projects.size }}){% endif %} →</a></p>
 
   {% if posts.size > 0 %}
   {% include site/photo.html photo=photos.writing check_only=true %}
