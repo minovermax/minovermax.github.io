@@ -22,7 +22,8 @@ photos:
   about:
     src: /images/photos/portrait.webp
     alt: "Portrait of Soungmin (Min) Lee"
-    caption: "me · georgia tech"
+    caption: "me"
+    source: "georgia tech, atlanta"
     width: 900
     height: 900
   research:
@@ -44,7 +45,8 @@ photos:
   contact:
     src: /images/photos/alex-columbus.webp
     alt: "A white dog lying on wet rocks in low sun"
-    caption: "alex · columbus"
+    caption: "alex, my dog"
+    source: "columbus, ga"
     credit: "photo by me"
     width: 1600
     height: 1200
