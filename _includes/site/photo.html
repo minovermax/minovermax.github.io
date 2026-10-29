@@ -1,0 +1,19 @@
+{% comment %}
+  A photo from front matter ({ src, alt, caption, width, height }), rendered only if the file
+  exists, so a slot can be filled later just by adding the image.
+  Usage: {% include site/photo.html photo=page.photos.research class="cover" %}
+  With check_only=true it renders nothing and just sets `photo_found`.
+{% endcomment %}
+{% assign photo_found = false %}
+{% if include.photo.src %}
+  {% assign photo_file = site.static_files | where: "path", include.photo.src | first %}
+  {% if photo_file %}{% assign photo_found = true %}{% endif %}
+{% endif %}
+{% if photo_found and include.check_only != true %}
+<figure class="photo {{ include.class }}">
+  <div class="photo__frame">
+    <img src="{{ include.photo.src | relative_url }}" alt="{{ include.photo.alt }}"{% if include.photo.width %} width="{{ include.photo.width }}" height="{{ include.photo.height }}"{% endif %} loading="lazy">
+  </div>
+  {% if include.photo.caption %}<figcaption class="mono"><span class="accent">fig.</span><span class="muted">{{ include.photo.caption }}</span></figcaption>{% endif %}
+</figure>
+{% endif %}

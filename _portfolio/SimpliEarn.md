@@ -2,6 +2,12 @@
 title: "SimpliEarn"
 excerpt: "Making financial earnings calls easy and understandable to novice investors through an interactive dashboard."
 collection: portfolio
+order: 2
+links:
+  - label: "project page"
+    url: "https://gtbigdatabigimpact.com/projects/simpli-earn"
+  - label: "demo video"
+    url: "https://www.youtube.com/watch?v=GO7GYQC7gV4"
 image: /images/simpliearn.png
 redirect_from:
   - /portfolio/SimpliEarn/

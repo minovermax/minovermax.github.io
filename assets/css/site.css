@@ -17,15 +17,21 @@
 }
 
 :root {
-  --bg: #0d1210;
-  --ink: #edf0eb;
-  --muted: #949f98;
-  --line: #27302c;
-  --line-strong: #414c46;
-  --panel: #131a17;
-  --accent: #9fd0c6;
-  --hero-bg: #0b0f0d;
-  --hero-ink: #f3f5f1;
+  --bg: #0c1016;
+  --ink: #edf0f4;
+  --muted: #939ba6;
+  --line: #252b34;
+  --line-strong: #3f4753;
+  --panel: #131821;
+  --accent: #a2c3e2;
+  --hero-bg: #0a0d12;
+  --hero-ink: #f2f4f7;
+
+  /* one grade for every photo so they sit in the palette instead of looking pasted in */
+  --grade: saturate(0.56) contrast(1.06) brightness(0.9);
+  --grade-hover: saturate(0.72) contrast(1.04) brightness(0.96);
+  --grade-tint: rgba(70, 112, 165, 0.3);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 
   --font-sans: "Helvetica Neue", Helvetica, "Inter Tight", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -37,13 +43,13 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #eef0ec;
-  --ink: #121613;
-  --muted: #5e6a63;
-  --line: #d3d9d2;
-  --line-strong: #a9b3ac;
-  --panel: #e4e9e2;
-  --accent: #2f6b63;
+  --bg: #edf0f4;
+  --ink: #11151b;
+  --muted: #5b6472;
+  --line: #d1d7df;
+  --line-strong: #a7b0bc;
+  --panel: #e2e7ee;
+  --accent: #2e5d86;
 
   color-scheme: light;
 }
@@ -287,8 +293,8 @@ ol {
 /* ---------- top bar ---------- */
 
 .bar {
-  --btn-line: rgba(243, 245, 241, 0.34);
-  --btn-bg: rgba(11, 15, 13, 0.32);
+  --btn-line: rgba(242, 244, 247, 0.34);
+  --btn-bg: rgba(9, 13, 18, 0.32);
 
   position: fixed;
   inset: 0 0 auto;
@@ -565,8 +571,9 @@ ol {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 12%;
-  filter: grayscale(0.6) saturate(0.75) contrast(1.06) brightness(0.6);
+  object-position: 58% 40%;
+  /* the source is small (500px), so soften it a touch and let the grain carry the texture */
+  filter: grayscale(0.85) contrast(1.08) brightness(0.62) blur(0.4px);
   transform: scale(1.06);
   animation: hero-settle 2.4s var(--ease) both;
 }
@@ -583,9 +590,19 @@ ol {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(11, 15, 13, 0.62) 0%, rgba(11, 15, 13, 0) 26%, rgba(11, 15, 13, 0) 48%, rgba(11, 15, 13, 0.9) 100%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-  mix-blend-mode: normal;
+    linear-gradient(180deg, rgba(9, 13, 18, 0.62) 0%, rgba(9, 13, 18, 0) 26%, rgba(9, 13, 18, 0) 48%, rgba(9, 13, 18, 0.9) 100%),
+    var(--grain);
+}
+
+/* same cool wash the other photos get */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--grade-tint);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
 }
 
 .hero__inner {
@@ -599,13 +616,19 @@ ol {
   line-height: 0.8;
   letter-spacing: -0.072em;
   white-space: nowrap;
-  animation: rise 1.4s 0.15s var(--ease) both;
 }
 
-@keyframes rise {
+/* each letter rises on its own, 70ms apart */
+.hero__letters > span {
+  display: inline-block;
+  animation: letter-rise 1s var(--ease) both;
+  animation-delay: calc(0.25s + var(--i) * 70ms);
+}
+
+@keyframes letter-rise {
   from {
     opacity: 0;
-    transform: translateY(0.12em);
+    transform: translateY(0.42em);
   }
 }
 
@@ -616,8 +639,8 @@ ol {
   gap: 6px 24px;
   margin-top: clamp(18px, 2.4vw, 32px);
   padding-block: 14px 22px;
-  border-top: 1px solid rgba(243, 245, 241, 0.22);
-  color: rgba(243, 245, 241, 0.78);
+  border-top: 1px solid rgba(242, 244, 247, 0.22);
+  color: rgba(242, 244, 247, 0.78);
   animation: fade 1.2s 0.6s var(--ease) both;
 }
 
@@ -763,6 +786,80 @@ ol {
   padding-top: 0.5em;
 }
 
+.who__side {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ---------- photos (shared grade) ---------- */
+
+.photo {
+  margin: 0;
+}
+
+.photo__frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  isolation: isolate;
+}
+
+.photo__frame img {
+  width: 100%;
+  height: auto;
+  filter: var(--grade);
+  transform: scale(1.03);
+  transition: transform 1.4s var(--ease), filter 0.6s var(--ease);
+}
+
+.photo__frame::before,
+.photo__frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.photo__frame::before {
+  z-index: 1;
+  background: var(--grade-tint);
+  mix-blend-mode: soft-light;
+}
+
+.photo__frame::after {
+  z-index: 2;
+  background: var(--grain);
+  opacity: 0.2;
+  mix-blend-mode: overlay;
+}
+
+.is-in .photo__frame img,
+.no-js .photo__frame img {
+  transform: none;
+}
+
+.photo:hover .photo__frame img {
+  filter: var(--grade-hover);
+}
+
+.photo figcaption {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* about: portrait under the "who" label */
+.portrait {
+  max-width: 300px;
+}
+
+.portrait img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+
 .who__body {
   max-width: 60ch;
   margin-top: clamp(28px, 3.4vw, 44px);
@@ -804,6 +901,53 @@ ol {
 .feature {
   padding-block: 8px clamp(48px, 6vw, 80px);
   border-bottom: 1px solid var(--line);
+}
+
+.feature--cover {
+  align-items: start;
+}
+
+.feature--cover > .cover {
+  grid-column: 1 / 6;
+}
+
+.feature--cover > .feature__main {
+  grid-column: 6 / -1;
+}
+
+.feature--cover .feature__meta {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 22px;
+  padding-top: 0;
+}
+
+.feature--cover .feature__meta .accent {
+  margin-bottom: 0;
+}
+
+.feature--cover .feature__title {
+  max-width: 18ch;
+  font-size: clamp(30px, 3.8vw, 56px);
+}
+
+.cover {
+  max-width: 560px;
+}
+
+.cover .photo__frame {
+  transition: transform 0.35s var(--ease);
+}
+
+.cover:hover .photo__frame {
+  transform: rotate(-1.2deg) scale(1.01);
+}
+
+.cover img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 32%;
 }
 
 .feature__meta,
@@ -1001,7 +1145,7 @@ ol {
 }
 
 .tiles--links {
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
 }
 
 .tile {
@@ -1547,6 +1691,150 @@ ol {
   background: var(--accent);
 }
 
+/* ---------- photo slots: work band, projects, writing, contact ---------- */
+
+.band {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: end;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+.band__photo {
+  grid-column: 1 / 9;
+}
+
+.band__photo img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.stats {
+  grid-column: 9 / -1;
+  border-top: 1px solid var(--line);
+}
+
+.stats div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.stats dd {
+  font-size: clamp(32px, 3.6vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.projects--photo {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: 24px;
+}
+
+.projects--photo .tiles {
+  grid-column: 1 / 9;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+}
+
+.projects__photo {
+  grid-column: 9 / -1;
+}
+
+.projects__photo img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.notes--photo {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+.notes--photo .label-rule {
+  grid-column: 1 / -1;
+}
+
+.notes__photo {
+  grid-column: 1 / 4;
+  margin-top: 24px;
+}
+
+.notes__photo img {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.notes--photo .notes__list {
+  grid-column: 4 / -1;
+}
+
+.notes--photo .note-row {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 7fr) auto;
+}
+
+.notes--photo .note-row > .mono:first-child {
+  grid-column: 1;
+}
+
+.notes--photo .note-row__title {
+  grid-column: 2;
+}
+
+.notes--photo .note-row__go {
+  grid-column: 3;
+}
+
+/* contact sits on a full-width photo, like saesh; the section stays dark in both themes */
+.sec.sec--photo {
+  --bg: var(--hero-bg);
+  --ink: var(--hero-ink);
+  --muted: rgba(242, 244, 247, 0.72);
+  --line: rgba(242, 244, 247, 0.16);
+  --line-strong: rgba(242, 244, 247, 0.34);
+  --panel: rgba(242, 244, 247, 0.07);
+  --accent: #a2c3e2;
+
+  position: relative;
+  isolation: isolate;
+  margin-top: clamp(96px, 13vw, 184px);
+  padding-top: clamp(80px, 10vw, 140px);
+  background: var(--hero-bg);
+  color: var(--ink);
+}
+
+.sec--photo::before,
+.sec--photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sec--photo::before {
+  z-index: -2;
+  background: var(--bg-photo) center 62% / cover no-repeat;
+  filter: var(--grade);
+}
+
+.sec--photo::after {
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(9, 13, 18, 0.5), rgba(9, 13, 18, 0.8)),
+    var(--grain);
+}
+
+.sec__credit {
+  margin-top: clamp(40px, 5vw, 64px);
+  text-align: right;
+  color: var(--muted);
+}
+
 /* ---------- footer ---------- */
 
 .foot {
@@ -1697,6 +1985,54 @@ ol {
     margin-left: 0;
   }
 
+  .portrait {
+    max-width: 220px;
+  }
+
+  .feature--cover > .cover,
+  .feature--cover > .feature__main {
+    grid-column: 1 / -1;
+  }
+
+  .cover {
+    max-width: 340px;
+  }
+
+  .band {
+    row-gap: 20px;
+  }
+
+  .band__photo,
+  .stats,
+  .projects--photo .tiles,
+  .notes--photo .notes__list {
+    grid-column: 1 / -1;
+  }
+
+  .projects__photo {
+    grid-column: 4 / -1;
+  }
+
+  .notes__photo {
+    grid-column: 1 / 8;
+  }
+
+  .notes--photo .note-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .notes--photo .note-row > .mono:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .notes--photo .note-row__title {
+    grid-column: 1;
+  }
+
+  .notes--photo .note-row__go {
+    grid-column: 2;
+  }
+
   .article__side:empty {
     display: none;
   }
@@ -1744,6 +2080,21 @@ ol {
 
   .tile {
     min-height: 180px;
+  }
+
+  .tiles--links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .tile--link {
+    min-height: 120px;
+    gap: 18px;
+    padding: 14px;
+  }
+
+  .tile--link .tile__name {
+    font-size: 20px;
   }
 
   .article__nav {

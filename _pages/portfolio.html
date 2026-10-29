@@ -9,5 +9,5 @@ count_label: projects
 count_label_one: project
 ---
 <div class="tiles">
-  {% for item in site.portfolio %}{% include site/project-tile.html item=item index=forloop.index %}{% endfor %}
+  {% assign projects = site.portfolio | sort: "order", "last" %}{% for item in projects %}{% include site/project-tile.html item=item index=forloop.index %}{% endfor %}
 </div>

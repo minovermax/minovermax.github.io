@@ -26,6 +26,11 @@ layout: default
     {% endif %}
     <h1 class="article__title">{{ page.title }}</h1>
     {% if is_pub and page.citation %}<p class="authors">{% include site/authors.html pub=page %}</p>{% endif %}
+    {% if page.links and page.links.size > 0 %}
+    <div class="links">
+      {% for link in page.links %}<a class="{% if forloop.first %}btn btn--solid{% else %}chip{% endif %}" href="{{ link.url }}">{{ link.label }} <span aria-hidden="true">{% if forloop.first %}▸{% else %}↗{% endif %}</span></a>{% endfor %}
+    </div>
+    {% endif %}
     {% if is_pub %}
     <div class="links">
       {% if page.paperurl and page.paperurl != "" %}<a class="btn btn--solid" href="{{ page.paperurl }}">read paper <span aria-hidden="true">▸</span></a>{% endif %}

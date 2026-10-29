@@ -3,17 +3,20 @@ layout: default
 ---
 {% comment %}
   Homepage sections. The shell (bar, menu, rail, footer) comes from default.html.
+  Photos come from `photos:` in _pages/about.md, one slot per section.
 {% endcomment %}
 {% assign pubs = site.publications | sort: "date" | reverse %}
 {% assign latest = pubs.first %}
 {% assign posts = site.posts | where_exp: "post", "post.hidden != true" %}
 {% assign author = site.author %}
+{% assign photos = page.photos %}
 
 <section class="hero" id="top">
-  <img class="hero__img" src="{{ '/images/profile.jpeg' | relative_url }}" alt="Portrait of {{ author.name }}" width="1236" height="1236" fetchpriority="high">
+  <img class="hero__img" src="{{ photos.hero.src | relative_url }}" alt="{{ photos.hero.alt }}" width="{{ photos.hero.width }}" height="{{ photos.hero.height }}" fetchpriority="high">
   <div class="hero__shade" aria-hidden="true"></div>
   <div class="hero__inner wrap">
-    <h1 class="hero__mark" aria-label="{{ author.name }}">{{ site.wordmark }}</h1>
+    {% assign letters = site.wordmark | split: "" %}
+    <h1 class="hero__mark" aria-label="{{ author.name }}"><span class="hero__letters" aria-hidden="true">{% for ch in letters %}<span style="--i: {{ forloop.index0 }}">{% if ch == " " %}&nbsp;{% else %}{{ ch }}{% endif %}</span>{% endfor %}</span></h1>
     <div class="hero__meta mono">
       <span>{{ author.name | downcase }}</span>
       <span>{{ page.focus }}</span>
@@ -26,7 +29,10 @@ layout: default
   {% assign about_note = site.data.education.first.school | downcase %}
   {% include site/sec-head.html title="about" note=about_note %}
   <div class="who" data-reveal>
-    <span class="tag mono">who</span>
+    <div class="who__side">
+      <span class="tag mono">who</span>
+      {% include site/photo.html photo=photos.about class="portrait" %}
+    </div>
     <div class="who__main">
       <p class="big">{{ page.statement }}</p>
       <div class="who__body">{{ content }}</div>
@@ -52,13 +58,19 @@ layout: default
 
   {% if latest %}
   {% capture venue %}{% include site/venue.html pub=latest %}{% endcapture %}
-  <article class="feature" data-reveal>
+  {% capture feature_meta %}
     <div class="feature__meta mono">
       <span class="accent"><span class="dot" aria-hidden="true"></span>latest</span>
       <span>{{ latest.date | date: "%Y.%m" }}</span>
       <span class="muted">{{ venue | strip | downcase }}</span>
     </div>
+  {% endcapture %}
+  {% include site/photo.html photo=photos.research check_only=true %}
+  {% assign has_cover = photo_found %}
+  <article class="feature{% if has_cover %} feature--cover{% endif %}" data-reveal>
+    {% if has_cover %}{% include site/photo.html photo=photos.research class="cover" %}{% else %}{{ feature_meta }}{% endif %}
     <div class="feature__main">
+      {% if has_cover %}{{ feature_meta }}{% endif %}
       <h3 class="feature__title"><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h3>
       <p class="authors">{% include site/authors.html pub=latest %}</p>
       <p class="feature__excerpt">{{ latest.excerpt | strip_html }}</p>
@@ -77,10 +89,26 @@ layout: default
 </section>
 
 <section class="sec wrap" id="work">
-  {% capture work_note %}since {{ site.data.experience.last.start | split: "." | first }}{% endcapture %}
+  {% assign jobs = site.data.experience %}
+  {% assign orgs = jobs | map: "org" | uniq %}
+  {% assign first_year = jobs.last.start | split: "." | first %}
+  {% capture work_note %}since {{ first_year }}{% endcapture %}
   {% include site/sec-head.html title="work" note=work_note %}
+
+  {% include site/photo.html photo=photos.work check_only=true %}
+  {% if photo_found %}
+  <div class="band" data-reveal>
+    {% include site/photo.html photo=photos.work class="band__photo" %}
+    <dl class="stats">
+      <div><dt class="mono muted">roles</dt><dd>{% if jobs.size < 10 %}0{% endif %}{{ jobs.size }}</dd></div>
+      <div><dt class="mono muted">teams</dt><dd>{% if orgs.size < 10 %}0{% endif %}{{ orgs.size }}</dd></div>
+      <div><dt class="mono muted">since</dt><dd>{{ first_year }}</dd></div>
+    </dl>
+  </div>
+  {% endif %}
+
   <ol class="jobs">
-    {% for job in site.data.experience %}
+    {% for job in jobs %}
     <li data-reveal>
       <details class="job">
         <summary>
@@ -104,51 +132,63 @@ layout: default
 
 <section class="sec wrap" id="projects">
   {% include site/sec-head.html title="projects" note="builds &amp; notes" %}
-  <div class="tiles" data-reveal>
-    {% for item in site.portfolio %}{% include site/project-tile.html item=item index=forloop.index %}{% endfor %}
+  {% include site/photo.html photo=photos.projects check_only=true %}
+  <div class="projects{% if photo_found %} projects--photo{% endif %}" data-reveal>
+    <div class="tiles">
+      {% assign projects = site.portfolio | sort: "order", "last" %}{% for item in projects %}{% include site/project-tile.html item=item index=forloop.index %}{% endfor %}
+    </div>
+    {% include site/photo.html photo=photos.projects class="projects__photo" %}
   </div>
 
   {% if posts.size > 0 %}
-  <div class="notes" data-reveal>
+  {% include site/photo.html photo=photos.writing check_only=true %}
+  <div class="notes{% if photo_found %} notes--photo{% endif %}" data-reveal>
     <p class="label-rule">writing</p>
-    <ul class="note-list">
-      {% for post in posts limit: 4 %}{% include site/note-row.html post=post %}{% endfor %}
-    </ul>
-    <p class="footnote mono muted"><a href="{{ '/writing/' | relative_url }}">all writing →</a></p>
+    {% include site/photo.html photo=photos.writing class="notes__photo" %}
+    <div class="notes__list">
+      <ul class="note-list">
+        {% for post in posts limit: 4 %}{% include site/note-row.html post=post %}{% endfor %}
+      </ul>
+      <p class="footnote mono muted"><a href="{{ '/writing/' | relative_url }}">all writing →</a></p>
+    </div>
   </div>
   {% endif %}
 </section>
 
-<section class="sec sec--last wrap" id="contact">
-  {% include site/sec-head.html title="contact" note="say hi" %}
-  <div class="who" data-reveal>
-    <span class="tag mono">inquiries</span>
-    <div class="who__main">
-      <p class="big">{{ page.contact_line }}</p>
+{% include site/photo.html photo=photos.contact check_only=true %}
+<section class="sec sec--last{% if photo_found %} sec--photo{% endif %}" id="contact"{% if photo_found %} style="--bg-photo: url('{{ photos.contact.src | relative_url }}')"{% endif %}>
+  <div class="wrap">
+    {% include site/sec-head.html title="contact" note="say hi" %}
+    <div class="who" data-reveal>
+      <span class="tag mono">inquiries</span>
+      <div class="who__main">
+        <p class="big">{{ page.contact_line }}</p>
+      </div>
     </div>
-  </div>
-  <div class="tiles tiles--links" data-reveal>
-    {% if author.email %}
-    <a class="tile tile--link" href="mailto:{{ author.email }}">
-      <span class="tile__top"><i class="ico ico--mail" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
-      <span class="tile__bottom"><span class="tile__name">email</span><span class="tile__sub mono">{{ author.email }}</span></span>
-    </a>
-    {% endif %}
-    {% if author.github %}
-    <a class="tile tile--link" href="https://github.com/{{ author.github }}">
-      <span class="tile__top"><i class="ico ico--gh" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
-      <span class="tile__bottom"><span class="tile__name">github</span><span class="tile__sub mono">@{{ author.github }}</span></span>
-    </a>
-    {% endif %}
-    {% if author.linkedin %}
-    <a class="tile tile--link" href="https://www.linkedin.com/in/{{ author.linkedin }}">
-      <span class="tile__top"><i class="ico ico--in" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
-      <span class="tile__bottom"><span class="tile__name">linkedin</span><span class="tile__sub mono">in/{{ author.linkedin }}</span></span>
-    </a>
-    {% endif %}
-    <a class="tile tile--link" href="{{ '/min-lee-resume/' | relative_url }}">
-      <span class="tile__top"><i class="ico ico--doc" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
-      <span class="tile__bottom"><span class="tile__name">resume</span><span class="tile__sub mono">web · pdf</span></span>
-    </a>
+    <div class="tiles tiles--links" data-reveal>
+      {% if author.email %}
+      <a class="tile tile--link" href="mailto:{{ author.email }}">
+        <span class="tile__top"><i class="ico ico--mail" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
+        <span class="tile__bottom"><span class="tile__name">email</span><span class="tile__sub mono">{{ author.email }}</span></span>
+      </a>
+      {% endif %}
+      {% if author.github %}
+      <a class="tile tile--link" href="https://github.com/{{ author.github }}">
+        <span class="tile__top"><i class="ico ico--gh" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
+        <span class="tile__bottom"><span class="tile__name">github</span><span class="tile__sub mono">@{{ author.github }}</span></span>
+      </a>
+      {% endif %}
+      {% if author.linkedin %}
+      <a class="tile tile--link" href="https://www.linkedin.com/in/{{ author.linkedin }}">
+        <span class="tile__top"><i class="ico ico--in" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
+        <span class="tile__bottom"><span class="tile__name">linkedin</span><span class="tile__sub mono">in/{{ author.linkedin }}</span></span>
+      </a>
+      {% endif %}
+      <a class="tile tile--link" href="{{ '/min-lee-resume/' | relative_url }}">
+        <span class="tile__top"><i class="ico ico--doc" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
+        <span class="tile__bottom"><span class="tile__name">resume</span><span class="tile__sub mono">web · pdf</span></span>
+      </a>
+    </div>
+    {% if photo_found and photos.contact.caption %}<p class="sec__credit mono"><span class="accent">fig.</span> {{ photos.contact.caption }}</p>{% endif %}
   </div>
 </section>
