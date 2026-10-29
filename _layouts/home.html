@@ -190,10 +190,6 @@ layout: default
         <span class="tile__bottom"><span class="tile__name">linkedin</span><span class="tile__sub mono">in/{{ author.linkedin }}</span></span>
       </a>
       {% endif %}
-      <a class="tile tile--link" href="{{ '/min-lee-resume/' | relative_url }}">
-        <span class="tile__top"><i class="ico ico--doc" aria-hidden="true"></i><span class="tile__arrow" aria-hidden="true">↗</span></span>
-        <span class="tile__bottom"><span class="tile__name">resume</span><span class="tile__sub mono">web · pdf</span></span>
-      </a>
     </div>
     {% if photo_found and photos.contact.caption %}{% include site/photo-caption.html photo=photos.contact tag="p" class="sec__credit" %}{% endif %}
   </div>
