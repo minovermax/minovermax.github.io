@@ -41,20 +41,6 @@ photos:
     credit: "photo by me"
     width: 1280
     height: 960
-  projects:
-    src: /images/photos/chris-sunlight.webp
-    alt: "A white cat resting by a sunny window"
-    caption: "chris · sunlight"
-    width: 961
-    height: 961
-  writing:
-    src: /images/photos/installation-tall.webp
-    alt: "Close-up of folded steel shards in Adrián Villar Rojas' The Language of the Enemy"
-    caption: "the language of the enemy, detail"
-    source: "adrián villar rojas, art sonje center"
-    credit: "photo by me"
-    width: 900
-    height: 1200
   contact:
     src: /images/photos/alex-columbus.webp
     alt: "A white dog lying on wet rocks in low sun"
