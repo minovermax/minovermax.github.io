@@ -90,7 +90,8 @@ layout: default
 <section class="sec wrap" id="work">
   {% assign jobs = site.data.experience %}
   {% assign orgs = jobs | map: "org" | uniq %}
-  {% assign first_year = jobs.last.start | split: "." | first %}
+  {% assign starts = jobs | map: "start" | sort %}
+  {% assign first_year = starts.first | split: "." | first %}
   {% capture work_note %}since {{ first_year }}{% endcapture %}
   {% include site/sec-head.html title="work" note=work_note %}
 

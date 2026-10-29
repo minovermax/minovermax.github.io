@@ -1,5 +1,6 @@
 {% comment %}
-  Author list pulled from a publication's citation ("A, B, C. (2026). ..."), with my name in bold.
-  Usage: {% include site/authors.html pub=post %}
+  Author list with my name in bold: the `authors` field if set, otherwise taken from the
+  citation ("A, B, C. (2026). ..."). Usage: {% include site/authors.html pub=post %}
 {% endcomment %}
-{{ include.pub.citation | split: ". (" | first | replace: "et al", "et al." | replace: "Soungmin Lee", "<b>Soungmin Lee</b>" }}
+{% if include.pub.authors %}{% assign author_list = include.pub.authors %}{% else %}{% assign author_list = include.pub.citation | split: ". (" | first | replace: "et al", "et al." %}{% endif %}
+{{ author_list | replace: "Soungmin Lee", "<b>Soungmin Lee</b>" }}

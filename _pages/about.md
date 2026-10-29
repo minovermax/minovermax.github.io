@@ -42,6 +42,14 @@ photos:
     credit: "photo by me"
     width: 1280
     height: 960
+  projects:
+    src: /images/photos/chris-desk.webp
+    alt: "Chris, a white cat, lying on a notebook on a desk under a green lamp"
+    caption: "chris, my cat"
+    source: "home"
+    credit: "photo by my sis"
+    width: 960
+    height: 1280
   contact:
     src: /images/photos/alex-columbus.webp
     alt: "A white dog lying on wet rocks in low sun"
