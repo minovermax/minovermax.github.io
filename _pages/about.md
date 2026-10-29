@@ -1,7 +1,7 @@
 ---
 permalink: /
 layout: home
-title: "Soungmin (Min) Lee"
+title: "min's"
 redirect_from:
   - /about/
   - /about.html
