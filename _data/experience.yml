@@ -42,17 +42,6 @@
     - "Applied and trained the ECA-ResNet model using Python and TensorFlow on a RSSI localization system, improving vehicle tracking accuracy by 15% and identifying key error factors for further optimization."
     - "Implemented a customized particle filter for UWB data, reducing location measurement error by 55% within an 10 yard range, enhancing mobile digital key functionality."
 
-- role: "Software Engineer Intern"
-  org: "VITAON"
-  team: ""
-  location: "Atlanta, GA (Remote)"
-  start: "2024.05"
-  end: "2024.06"
-  bullets:
-    - "Developed the frontend and backend of VITAON, a cross-platform e-commerce application using ReactJS and Node.js, enabling personalized nutritional supplement recommendations based on user data."
-    - "Designed and deployed a Microsoft Azure-based machine learning model to classify dietary supplements from images, extracting key product details (e.g., RDA, market data) with 97% Top-5 accuracy."
-    - "Engineered a recommendation algorithm that tailors supplement suggestions based on user attributes (age, gender, dietary restrictions, current intake) using Python, enhancing user experience and safety."
-
 - role: "Software Developer, Sergeant"
   org: "Republic of Korea Air Force"
   team: "지능정보체계관리단"
