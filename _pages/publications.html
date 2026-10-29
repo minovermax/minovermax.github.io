@@ -1,36 +1,33 @@
 ---
 layout: archive
-title: "Publications"
-permalink: /publications/
-author_profile: true
+title: "Research"
+permalink: /research/
+redirect_from:
+  - /publications/
+count: publications
+count_label: papers
+count_label_one: paper
+lead: "Papers on speech recognition, code-switching, and language models for finance."
 ---
-
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+{% assign pubs = site.publications | sort: "date" | reverse %}
+{% for category in site.publication_category %}
+  {% assign items = pubs | where: "category", category[0] %}
+  {% if items.size > 0 %}
+  <section class="group">
+    <p class="label-rule">{{ category[1].title | downcase }}</p>
+    <ol class="pubs">
+      {% for pub in items %}{% include site/pub-row.html pub=pub %}{% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+{% endfor %}
+{% assign other = pubs | where_exp: "pub", "pub.category == nil" %}
+{% if other.size > 0 %}
+  <section class="group">
+    <p class="label-rule">other</p>
+    <ol class="pubs">
+      {% for pub in other %}{% include site/pub-row.html pub=pub %}{% endfor %}
+    </ol>
+  </section>
 {% endif %}
-
-{% include base_path %}
-
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
-
-
-
+<p class="footnote mono muted">† core contributor{% if site.author.googlescholar %} <span aria-hidden="true">·</span> <a href="{{ site.author.googlescholar }}">google scholar ↗</a>{% endif %}</p>

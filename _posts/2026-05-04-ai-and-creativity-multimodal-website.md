@@ -1,7 +1,8 @@
 ---
 title: "AI and Creativity: A Multimodal Website"
 date: 2026-05-04
-permalink: /posts/2026/05/ai-and-creativity-multimodal-website/
+redirect_from:
+  - /posts/2026/05/ai-and-creativity-multimodal-website/
 tags:
   - ai
   - creativity

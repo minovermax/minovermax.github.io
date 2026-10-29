@@ -1,0 +1,10 @@
+{% comment %}
+  One post as a list row. Usage: {% include site/note-row.html post=post %}
+{% endcomment %}
+<li>
+  <a class="note-row" href="{{ include.post.url | relative_url }}">
+    <span class="mono muted">{{ include.post.date | date: "%Y.%m.%d" }}</span>
+    <span class="note-row__title">{{ include.post.title }}</span>
+    <span class="note-row__go mono" aria-hidden="true">read →</span>
+  </a>
+</li>

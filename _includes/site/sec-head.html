@@ -1,0 +1,11 @@
+{% comment %}
+  Section heading: "- title - - - - - - note".
+  Usage: {% include site/sec-head.html title="research" note="03 papers" tag="h1" %}
+{% endcomment %}
+{% assign tag = include.tag | default: "h2" %}
+<div class="sec-head" data-reveal>
+  <span class="sec-head__dash" aria-hidden="true"></span>
+  <{{ tag }}>{{ include.title }}</{{ tag }}>
+  <span class="sec-head__rule" aria-hidden="true"></span>
+  {% if include.note and include.note != "" %}<span class="sec-head__note mono">{{ include.note }}</span>{% endif %}
+</div>

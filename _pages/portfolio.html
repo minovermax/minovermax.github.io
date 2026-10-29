@@ -1,14 +1,13 @@
 ---
 layout: archive
-title: "Portfolio"
-permalink: /portfolio/
-author_profile: true
+title: "Projects"
+permalink: /projects/
+redirect_from:
+  - /portfolio/
+count: portfolio
+count_label: projects
+count_label_one: project
 ---
-
-{% include base_path %}
-
-
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
-
+<div class="tiles">
+  {% for item in site.portfolio %}{% include site/project-tile.html item=item index=forloop.index %}{% endfor %}
+</div>

@@ -1,24 +1,23 @@
 ---
 layout: default
 ---
-
-{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
-  {% include page__hero.html %}
+{% comment %}
+  List pages (research, projects, writing, cv). Optional front matter:
+  `heading` (defaults to the lowercased title), `lead`, and either
+  `count: <collection>` + `count_label` / `count_label_one` ("03 papers") or a plain `note`.
+{% endcomment %}
+{% assign heading = page.heading | default: page.title | downcase %}
+{% assign note = page.note %}
+{% if page.count %}
+  {% assign counted = site[page.count] | where_exp: "item", "item.hidden != true" %}
+  {% capture note %}{% if counted.size < 10 %}0{% endif %}{{ counted.size }} {% if counted.size == 1 and page.count_label_one %}{{ page.count_label_one }}{% else %}{{ page.count_label }}{% endif %}{% endcapture %}
 {% endif %}
-
-{% if page.url != "/" and site.breadcrumbs %}
-  {% unless paginator %}
-    {% include breadcrumbs.html %}
-  {% endunless %}
-{% endif %}
-
-<div id="main" role="main">
-  {% include sidebar.html %}
-
+<div class="page wrap">
+  <header class="page-head">
+    {% include site/sec-head.html tag="h1" title=heading note=note %}
+    {% if page.lead %}<p class="page-lead" data-reveal>{{ page.lead }}</p>{% endif %}
+  </header>
   <div class="archive">
-    {% unless page.header.overlay_color or page.header.overlay_image %}
-      <h1 class="page__title">{{ page.title }}</h1>
-    {% endunless %}
     {{ content }}
   </div>
 </div>

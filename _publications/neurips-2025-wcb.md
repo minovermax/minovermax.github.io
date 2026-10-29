@@ -1,8 +1,10 @@
 ---
 title: "Words That Unite The World: A Unified Framework for Deciphering Central Bank Communications Globally"
-collection: cations
+collection: publications
 category: conferences
-permalink: /publication/2025-wcb
+permalink: /research/2025-wcb/
+redirect_from:
+  - /publication/2025-wcb
 excerpt: "Introduces the World Central Banks (WCB) dataset, the largest multilingual corpus of monetary policy communications, with expert-annotated stance, temporal, and uncertainty labels. Benchmarks show cross-bank training improves classification and interpretability."
 date: 2025-12-02
 venue: "NeurIPS"

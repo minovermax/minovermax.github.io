@@ -2,9 +2,11 @@
 title: "SimpliEarn"
 excerpt: "Making financial earnings calls easy and understandable to novice investors through an interactive dashboard."
 collection: portfolio
+image: /images/simpliearn.png
+redirect_from:
+  - /portfolio/SimpliEarn/
 ---
 
-## SimpliEarn
 
 Making financial earnings calls easy and understandable for novice investors. [[Demo Video]](https://www.youtube.com/watch?v=GO7GYQC7gV4)
 

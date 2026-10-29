@@ -1,4 +1,4 @@
-// Homepage behavior: header state, menu overlay, theme toggle, scroll reveal, local clock.
+// Site behavior: header state, menu overlay, theme toggle, scroll reveal, local clock.
 (function () {
   var root = document.documentElement;
   var body = document.body;

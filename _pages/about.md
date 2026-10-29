@@ -7,7 +7,6 @@ redirect_from:
   - /about.html
 # Homepage copy. Publications come from _publications/, work history from
 # _data/experience.yml, degrees from _data/education.yml, projects from _portfolio/.
-wordmark: "min lee"
 focus: "nlp · speech · applied ml"
 statement: "language, speech, and the software around them."
 contact_line: "research, internships, or just to say hi. email is the fastest way to reach me."

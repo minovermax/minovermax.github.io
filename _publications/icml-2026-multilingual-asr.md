@@ -2,7 +2,9 @@
 title: "Towards Truly Multilingual ASR: Generalizing Code-Switching ASR to Unseen Language Pairs"
 collection: publications
 category: conferences
-permalink: /publication/2026-multilingual-asr
+permalink: /research/2026-multilingual-asr/
+redirect_from:
+  - /publication/2026-multilingual-asr
 excerpt: "Investigates whether code-switching ASR capabilities learned from limited seen language pairs can generalize to unseen language pairs using model merging and domain generalization methods."
 date: 2026-06-04
 venue: "ICML Workshop on Machine Learning for Audio"

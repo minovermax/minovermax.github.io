@@ -1,0 +1,10 @@
+{% comment %}
+  One portfolio item as a bordered tile. Usage: {% include site/project-tile.html item=item index=forloop.index %}
+{% endcomment %}
+<a class="tile" href="{{ include.item.url | relative_url }}">
+  <span class="tile__top mono"><span>p.{% if include.index < 10 %}0{% endif %}{{ include.index }}</span><span class="tile__arrow" aria-hidden="true">↗</span></span>
+  <span class="tile__bottom">
+    <span class="tile__name">{{ include.item.title }}</span>
+    <span class="tile__sub">{{ include.item.excerpt | strip_html | strip }}</span>
+  </span>
+</a>

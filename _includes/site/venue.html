@@ -1,0 +1,5 @@
+{% comment %}
+  Full venue name, taken from the <i>…</i> part of the citation, falling back to `venue`.
+  Usage: {% include site/venue.html pub=post %}
+{% endcomment %}
+{% if include.pub.citation contains "<i>" %}{{ include.pub.citation | split: "<i>" | last | split: "</i>" | first }}{% else %}{{ include.pub.venue }}{% endif %}

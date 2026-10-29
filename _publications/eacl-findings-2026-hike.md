@@ -2,7 +2,9 @@
 title: "HiKE: Hierarchical Evaluation Framework for Korean-English Code-Switching Speech Recognition"
 collection: publications
 category: conferences
-permalink: /publication/2026-hike
+permalink: /research/2026-hike/
+redirect_from:
+  - /publication/2026-hike
 excerpt: "Introduces HiKE, the first globally accessible hierarchical benchmark for Korean-English code-switching speech recognition, featuring loanword-aware annotations and multi-level code-switching labels that enable fine-grained evaluation of multilingual ASR models."
 date: 2026-01-06
 venue: "Findings of EACL"

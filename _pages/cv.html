@@ -1,0 +1,61 @@
+---
+layout: archive
+title: "CV"
+permalink: /cv/
+redirect_from:
+  - /resume
+note: "curriculum vitae"
+---
+{% comment %}
+  Built from the same data as the homepage: _data/education.yml,
+  _data/experience.yml and _publications/.
+{% endcomment %}
+{% assign pubs = site.publications | sort: "date" | reverse %}
+<div class="links cv-actions">
+  <a class="btn btn--solid" href="{{ '/min-lee-resume/resume.pdf' | relative_url }}">download pdf <span aria-hidden="true">▸</span></a>
+  <a class="chip" href="{{ '/min-lee-resume/' | relative_url }}">web resume <span aria-hidden="true">↗</span></a>
+  {% if site.author.email %}<a class="chip" href="mailto:{{ site.author.email }}">email <span aria-hidden="true">↗</span></a>{% endif %}
+</div>
+
+<section class="group">
+  <p class="label-rule">education</p>
+  <ul class="cv-list">
+    {% for d in site.data.education %}
+    <li class="cv-row" data-reveal>
+      <span class="cv-row__when mono">{{ d.year }}</span>
+      <div class="cv-row__what">
+        <span class="cv-row__title">{{ d.degree }}</span>
+        <span class="cv-row__sub">{{ d.focus }}</span>
+      </div>
+      <span class="cv-row__where mono muted">{{ d.school | downcase }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="group">
+  <p class="label-rule">experience</p>
+  <ul class="cv-list">
+    {% for job in site.data.experience %}
+    <li class="cv-row" data-reveal>
+      <span class="cv-row__when mono">{{ job.start }} — {{ job.end }}</span>
+      <div class="cv-row__what">
+        <span class="cv-row__title">{{ job.role }}</span>
+        <span class="cv-row__sub">{{ job.org }}</span>
+        <ul class="bullets">
+          {% for b in job.bullets %}<li>{{ b }}</li>{% endfor %}
+        </ul>
+      </div>
+      <span class="cv-row__where mono muted">{% if job.team != "" %}{{ job.team | downcase }}<br>{% endif %}{{ job.location | downcase }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="group">
+  <p class="label-rule">publications</p>
+  <ol class="pubs">
+    {% for pub in pubs %}{% include site/pub-row.html pub=pub %}{% endfor %}
+  </ol>
+  <p class="footnote mono muted">† core contributor</p>
+</section>

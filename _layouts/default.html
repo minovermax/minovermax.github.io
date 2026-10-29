@@ -1,31 +1,39 @@
 ---
-layout: compress
 ---
-
-{% include base_path %}
-
+{% comment %}
+  Site shell for every page: head, fixed bar + menu, main, footer.
+  Styles live in assets/css/site.css, behavior in assets/js/site.js.
+{% endcomment %}
+{% assign is_home = false %}
+{% if page.layout == "home" %}{% assign is_home = true %}{% endif %}
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
-  <head>
-    {% include head.html %}
-    {% include head/custom.html %}
-  </head>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+<head>
+  {% include site/head.html %}
+</head>
+<body{% unless is_home %} class="is-scrolled is-page"{% endunless %}>
+  {% unless is_home %}<span id="top"></span>{% endunless %}
+  <a class="skip mono" href="#main">skip to content</a>
 
-  <body>
+  {% include site/bar.html is_home=is_home %}
 
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
+  {% if is_home %}
+  <aside class="rail" aria-label="Elsewhere">
+    {% if site.author.github %}<a href="https://github.com/{{ site.author.github }}" aria-label="GitHub"><i class="ico ico--gh" aria-hidden="true"></i></a>{% endif %}
+    {% if site.author.linkedin %}<a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn"><i class="ico ico--in" aria-hidden="true"></i></a>{% endif %}
+    {% if site.author.email %}<a href="mailto:{{ site.author.email }}" aria-label="Email"><i class="ico ico--mail" aria-hidden="true"></i></a>{% endif %}
+    <a href="#top" aria-label="Back to top"><span aria-hidden="true">↑</span></a>
+  </aside>
 
+  <a class="tab" href="{{ '/min-lee-resume/' | relative_url }}">resume</a>
+  {% endif %}
+
+  <main id="main">
     {{ content }}
+  </main>
 
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
+  {% include site/footer.html %}
 
-    {% include scripts.html %}
-
-  </body>
+  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+</body>
 </html>

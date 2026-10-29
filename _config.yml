@@ -4,6 +4,7 @@ site_theme               : "default"          # "default" or "air"
 title                    : "min's"
 title_separator          : "-"
 name                     : &name "min's"
+wordmark                 : "min lee"          # big lowercase name used in the header and homepage
 description              : &description "CS @ Georgia Tech · NLP, Speech, Applied ML"
 url                      : https://min.is-a.dev           # custom domain (is-a.dev), see CNAME
 baseurl                  : ""                              # user site = empty
@@ -144,7 +145,6 @@ analytics:
 include:
   - .htaccess
   - _pages
-  - files
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -172,6 +172,23 @@ exclude:
   - README
   - tmp
   - vendor
+  # template tooling, not site pages
+  - markdown_generator
+  - scripts
+  - talkmap
+  - talkmap.py
+  - "*.ipynb"
+  - docker-compose.yaml
+  - _config_docker.yml
+  - CONTRIBUTING.md
+  # template sample downloads (only markdown_generator references them)
+  - files/paper1.pdf
+  - files/paper2.pdf
+  - files/paper3.pdf
+  - files/slides1.pdf
+  - files/slides2.pdf
+  - files/slides3.pdf
+  - files/bibtex1.bib
 keep_files:
   - .git
   - .svn
@@ -199,16 +216,16 @@ kramdown:
 # Collections enabled by the template
 collections:
   teaching:
-    output: true
+    output: false  # template sample collection
     permalink: /:collection/:path/
   publications:
     output: true
-    permalink: /:collection/:path/
+    permalink: /research/:name/
   portfolio:
     output: true
-    permalink: /:collection/:path/
+    permalink: /projects/:name/
   talks:
-    output: true
+    output: false  # template sample collection
     permalink: /:collection/:path/
 
 # Defaults (layouts, sidebars)
@@ -267,7 +284,7 @@ sass:
   style: compressed
 
 # Outputting
-permalink: /:categories/:title/
+permalink: /writing/:title/
 timezone: America/Los_Angeles
 
 # Plugins

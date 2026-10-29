@@ -1,0 +1,15 @@
+{% comment %}
+  One publication as a list row. Usage: {% include site/pub-row.html pub=post %}
+{% endcomment %}
+{% assign p = include.pub %}
+<li class="pub" data-reveal>
+  <div class="pub__when mono">
+    <span>{{ p.date | date: "%Y.%m" }}</span>
+    <span class="muted">{% capture venue %}{% include site/venue.html pub=p %}{% endcapture %}{{ venue | strip | downcase }}</span>
+  </div>
+  <div class="pub__main">
+    <h3 class="pub__title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+    <p class="authors">{% include site/authors.html pub=p %}</p>
+    <div class="links">{% include site/pub-links.html pub=p %}</div>
+  </div>
+</li>

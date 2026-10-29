@@ -1,4 +1,5 @@
 ---
+published: false  # template sample page
 layout: archive
 title: "CV"
 permalink: /cv-json/

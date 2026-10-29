@@ -1,0 +1,66 @@
+{% comment %}
+  Fixed top bar + full-screen menu. On the homepage the left side shows the
+  latest paper over the hero; elsewhere it shows "min lee / <section>".
+{% endcomment %}
+{% assign home = '/' | relative_url %}
+{% case page.collection %}
+  {% when "publications" %}{% assign crumb = "research" %}{% assign crumb_url = '/research/' | relative_url %}
+  {% when "posts" %}{% assign crumb = "writing" %}{% assign crumb_url = '/writing/' | relative_url %}
+  {% when "portfolio" %}{% assign crumb = "projects" %}{% assign crumb_url = '/projects/' | relative_url %}
+  {% else %}{% assign crumb = page.title | downcase %}{% assign crumb_url = page.url | relative_url %}
+{% endcase %}
+
+<header class="bar" data-bar>
+  <div class="bar__left">
+    {% if include.is_home %}
+      {% assign latest = site.publications | sort: "date" | last %}
+      <a class="bar__name" href="#top">{{ site.wordmark }}</a>
+      {% if latest %}
+      <p class="bar__status mono">
+        <span class="dot" aria-hidden="true"></span>
+        <span>latest</span><span class="sep" aria-hidden="true">/</span>
+        <span>{{ latest.date | date: "%b %Y" | downcase }}</span><span class="sep" aria-hidden="true">/</span>
+        <a href="#research">{{ latest.title | split: ":" | first | downcase }} <span aria-hidden="true">→</span></a>
+      </p>
+      {% endif %}
+    {% else %}
+      <p class="bar__crumbs">
+        <a href="{{ home }}">{{ site.wordmark }}</a>
+        {% if crumb and crumb != "" %}<span class="sep" aria-hidden="true">/</span><a href="{{ crumb_url }}">{{ crumb }}</a>{% endif %}
+      </p>
+    {% endif %}
+  </div>
+  <nav class="bar__actions" aria-label="Quick actions">
+    <button class="btn btn--icon" type="button" data-theme-toggle aria-label="Toggle light and dark theme">
+      <span class="theme-glyph" aria-hidden="true"></span>
+    </button>
+    <a class="btn btn--hide-sm" href="{{ home }}#contact"><span class="dot" aria-hidden="true"></span>contact</a>
+    <button class="btn" type="button" data-menu-open aria-controls="menu" aria-expanded="false">
+      <span class="burger" aria-hidden="true"></span>menu
+    </button>
+  </nav>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+  <div class="menu__top wrap">
+    <span class="mono muted">index</span>
+    <button class="btn" type="button" data-menu-close>close <span aria-hidden="true">×</span></button>
+  </div>
+  <nav class="menu__list wrap" aria-label="Sections">
+    <a href="{{ home }}#about"><span class="mono">01</span>about</a>
+    <a href="{{ home }}#research"><span class="mono">02</span>research</a>
+    <a href="{{ home }}#work"><span class="mono">03</span>work</a>
+    <a href="{{ home }}#projects"><span class="mono">04</span>projects</a>
+    <a href="{{ home }}#contact"><span class="mono">05</span>contact</a>
+  </nav>
+  <div class="menu__pages wrap">
+    <p class="label-rule">pages</p>
+    <ul>
+      {% for link in site.data.navigation.main %}
+      <li><a href="{{ link.url | relative_url }}">{{ link.title | downcase }} <span aria-hidden="true">↗</span></a></li>
+      {% endfor %}
+      <li><a href="{{ '/min-lee-resume/' | relative_url }}">resume <span aria-hidden="true">↗</span></a></li>
+    </ul>
+  </div>
+  <p class="menu__sys wrap mono muted">user@{{ site.author.github }} <span aria-hidden="true">//</span> ver. {{ site.time | date: "%Y.%m.%d" }}</p>
+</div>
