@@ -7,7 +7,7 @@
 {% assign seo_url = seo_url | default: site.github.url %}
 
 {% comment %}
-  Tabs: home is just the site name, pages read "min's Research", and items in a
+  Tabs: home is just the site name, pages read "min's research", and items in a
   collection (papers, posts, projects) keep their long title first: "Title - min's".
   The page title still feeds og/twitter below.
 {% endcomment %}
@@ -15,7 +15,7 @@
   {% if page.collection %}
     {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: site.title %}
   {% else %}
-    {% assign seo_title = site.title | append: " " | append: page.title %}
+    {% assign seo_title = page.title | downcase | prepend: " " | prepend: site.title %}
   {% endif %}
 {% endif %}
 
