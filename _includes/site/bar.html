@@ -56,9 +56,9 @@
     <p class="label-rule">pages</p>
     <ul>
       {% for link in site.data.navigation.main %}
-      <li><a href="{{ link.url | relative_url }}">{{ link.title | downcase }} <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ link.url | relative_url }}">{{ link.title | downcase }} <span aria-hidden="true">↗︎</span></a></li>
       {% endfor %}
-      <li><a href="{{ '/min-lee-resume/' | relative_url }}">resume <span aria-hidden="true">↗</span></a></li>
+      <li><a href="{{ '/min-lee-resume/' | relative_url }}">resume <span aria-hidden="true">↗︎</span></a></li>
     </ul>
   </div>
   <p class="menu__sys wrap mono muted">user@{{ site.author.github }} <span aria-hidden="true">//</span> ver. {{ site.time | date: "%Y.%m.%d" }}</p>
